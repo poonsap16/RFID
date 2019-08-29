@@ -45,23 +45,91 @@
 	</div>
 	</form> -->
 
-	<form class="border border-light p-3" action="">
-	  <div class="form-group">
-	    <label for="task_id">รหัสกิจกรรม</label>
-	    <input type="text" class="form-control" id="task_id">
-	  </div>
-	  <div class="form-group">
-	    <label for="task_name">ชื่อกิจกรรม:</label>
-	    <input type="text" class="form-control" id="task_name">
-	  </div>
-	  <div class="form-group">
-	    <label for="start_time">เวลาเริ่มกิจกรรม</label>
-	    <input type="time" class="form-control" id="start_time">
-	  </div>
-	  <div class="form-group">
-	    <label for="end_time">เวลาสิ้นสุดกิจกรรม:</label>
-	    <input type="time" class="form-control" id="end_time">
-	  </div>
+	<form class="border border-light p-5" action="">
+	  <div><h3>เพิ่มรายการกิจกรรม</h3></div>	
+
+		<div class="form-row">
+		  	<div class="form-group  col-sm-2">
+			    <label for="task_id">รหัสกิจกรรม</label>
+			    <input type="text" class="form-control" id="task_id">
+			</div>
+			<div class="form-group col-sm-4">
+			    <label for="task_name">ชื่อกิจกรรม:</label>
+			    <input type="text" class="form-control" id="task_name">
+			</div>
+	  	</div>
+
+		<div class="form-row">
+			<div class="form-group col-sm-2">
+			   	<label for="start_time">เวลาเริ่มกิจกรรม</label>
+				<input type="time" class="form-control" id="start_time">
+			</div>
+			<div class="form-group col-sm-2">
+			    <label for="end_time">เวลาสิ้นสุดกิจกรรม:</label>
+			    <input type="time" class="form-control" id="end_time">
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-sm-2">
+				<label for="start_time">เวลาก่อนกิจกรรม</label>
+			    <input type="time" class="form-control" id="start_time">
+			</div>
+			<div class="form-group col-sm-2">
+			    <label for="end_time">เวลาหลังกิจกรรม:</label>
+			    <input type="time" class="form-control" id="end_time">
+			</div>
+			<div class="form-group col-sm-2">
+		    	<label for="late_time">เวลาสาย:</label>
+		    	<input type="time" class="form-control" id="late_time">
+			</div>
+		</div>
+
+		<div class="form-row">
+		  	<div class="form-group  col-sm-2">
+			    <label for="job_id">รหัสภาระงาน</label>
+			    <input type="text" class="form-control" id="job_id">
+			</div>
+			<div class="form-group col-sm-4">
+			    <label for="job_type">ประเภทภาระงาน:</label>
+			    <input type="text" class="form-control" id="job_type">
+			</div>
+	  	</div>
+
+	  	<div class="form-row">
+<!-- 		  	<div class="form-group  col-sm-2">
+			    <label for="person_type">ผู้เข้าร่วมกิจกรรม</label>
+			    <input type="text" class="form-control" id="person_type">
+			</div> -->
+		    <div class="custom-control custom-checkbox sm-4">
+		        <input type="checkbox" class="custom-control-input" id="person_type">
+		        <label class="custom-control-label" for="person_type">อาจารย์แพทย์</label>
+		    </div>
+		    <div class="custom-control custom-checkbox sm-4">
+		        <input type="checkbox" class="custom-control-input" id="person_type">
+		        <label class="custom-control-label" for="person_type">Ressident/Fellow</label>
+		    </div>
+		</div>
+		
+
+
+	  	<div class="form-row">
+			<div class="form-group col-sm-2">
+			    <label for="rfid_location">เครื่องทาบบัตร:</label>
+			    <select id="rfid_location" class="form-control">
+			    	<option selected>Choose...</option>
+			        <option>ห้องวีกิจฯ</option>
+			        <option>ห้องจงจินต์ฯ</option>
+			        <option>Moblie 1</option>
+			    </select>
+			</div>
+			<div class="form-group col-sm-2">
+			    <label for="work_hour">จำนวนชั่วโมงภาระงาน:</label>
+			    <input type="text" class="form-control" id="work_hour">
+			</div>
+
+	  	</div>
+
 
 
 
