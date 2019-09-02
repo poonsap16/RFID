@@ -11,39 +11,7 @@
     <title>RFID-รายการกิจกรรม</title>
   </head>
   <body>
-<!-- 
-	<form class="border border-light p-3">
-	<div class="container">
-		<legend>Create</legend>
-		<div class="input-group input-group-sm mb-4">
-		  <div class="input-group-prepend">
-		    <span class="input-group-text" id="task_id">รหัสกิจกรรม</span>
-		  </div>
-		  <input type="text" class="form-control col-4" aria-label="Sizing example input" aria-describedby="task_id">
-		</div>
 
-		<div class="input-group input-group-sm mb-4">
-		  <div class="input-group-prepend">
-		    <span class="input-group-text" id="task_name">ชื่อกิจกรรม</span>
-		  </div>
-		  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="task_name">
-		  <div>
-		  	<span class="input-group-text" id="task_name">ชื่อย่อกิจกรรม</span>
-		  </div>
-		  <input type="text" class="form-control  col-4" aria-label="Sizing example input" aria-describedby="task_name">
-		</div>
-
-		<div class="input-group input-group-sm mb-4 col-4">
-		  <div class="input-group-prepend">
-		    <span class="input-group-text" id="task_name">ชื่อย่อกิจกรรม</span>
-		  </div>
-		  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="task_name">
-		</div>
-
-
-
-	</div>
-	</form> -->
 
 	<form class="border border-light p-5" action="">
 	  <div><h3>เพิ่มรายการกิจกรรม</h3></div>	
@@ -97,17 +65,18 @@
 	  	</div>
 
 	  	<div class="form-row">
-<!-- 		  	<div class="form-group  col-sm-2">
-			    <label for="person_type">ผู้เข้าร่วมกิจกรรม</label>
-			    <input type="text" class="form-control" id="person_type">
-			</div> -->
-		    <div class="custom-control custom-checkbox sm-4">
-		        <input type="checkbox" class="custom-control-input" id="person_type">
-		        <label class="custom-control-label" for="person_type">อาจารย์แพทย์</label>
-		    </div>
-		    <div class="custom-control custom-checkbox sm-4">
-		        <input type="checkbox" class="custom-control-input" id="person_type">
-		        <label class="custom-control-label" for="person_type">Ressident/Fellow</label>
+	  		<div class="col-sm-2">
+			    <div class="custom-control custom-checkbox sm-2">
+			        <input type="checkbox" class="custom-control-input" id="person_type">
+			        <label class="custom-control-label" for="person_type">อาจารย์แพทย์</label>
+			    </div>
+			</div>
+
+			<div class="col-sm-2">
+			    <div class="custom-control custom-checkbox sm-2">
+			        <input type="checkbox" class="custom-control-input" id="person_type">
+			        <label class="custom-control-label" for="person_type">Ressident/Fellow</label>
+			    </div>
 		    </div>
 		</div>
 		
