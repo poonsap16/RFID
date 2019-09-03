@@ -18,3 +18,7 @@ Route::get('/rfid', function () {
 Route::get('/schedule', function () {
     return view('schedule/activity');
 });
+
+Route::get('/create', 'TaskController@create');
+Route::post('/save', 'TaskController@store');
+

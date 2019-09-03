@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Task;
 
+
+
+
 class TaskController extends Controller
 {
     /**
@@ -36,11 +39,24 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new \App\Task();
+        $task->task_id = $request->input('task_id');
+        $task->task_name = $request->input('task_name');
+        $task->task_Acronym = $request->input('task_Acronym');
+        $task->start_time = $request->input('start_time');
+        $task->end_time = $request->input('end_time');
+        $task->before_time = $request->input('before_time');
+        $task->after_time = $request->input('after_time');
+        $task->late_time = $request->input('late_time');
+        $task->job_id = $request->input('job_id');
+        $task->job_type = $request->input('job_type');
+        $task->rfid_location = $request->input('rfid_location');
+        $task->work_hour = $request->input('work_hour');
+        $task->save();
+        //return view('schedule.activity');
         return $request->all();
-        // $task = request()->all();
-        // return $task;
-        // Type::create($task);
-        // return back()->with('success','Created Successfully !!');
+        
+        
+
 
     }
 

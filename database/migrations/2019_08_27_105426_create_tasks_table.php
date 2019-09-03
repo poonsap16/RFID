@@ -20,12 +20,11 @@ class CreateTasksTable extends Migration
             $table->string('task_Acronym',20);
             $table->time('start_time');
             $table->time('end_time');
-            $table->time('before_time');
-            $table->time('after_time');
-            $table->time('late_time');
+            $table->integer('before_time');
+            $table->integer('after_time');
+            $table->integer('late_time');
             $table->string('job_id');
             $table->string('job_type');
-            $table->string('person_type');
             $table->string('rfid_location');
             $table->float('work_hour',2,1);
             $table->timestamps();
