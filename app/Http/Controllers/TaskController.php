@@ -17,8 +17,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-            }
+        $tasks = \App\Task::all(); 
+        
+
+        return view('schedule.index')->with(['tasks' => $tasks]);  
+    }
 
     /**
      * Show the form for creating a new resource.

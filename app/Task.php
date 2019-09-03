@@ -17,7 +17,6 @@ class Task extends Model
             'late_time',
             'job_id',
             'job_type',
-            'person_type',
             'rfid_location',
             'work_hour'
     ];

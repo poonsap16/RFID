@@ -19,6 +19,8 @@ Route::get('/schedule', function () {
     return view('schedule/activity');
 });
 
+Route::get('/index', 'TaskController@index');
 Route::get('/create', 'TaskController@create');
 Route::post('/save', 'TaskController@store');
+
 
