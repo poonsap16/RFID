@@ -1,20 +1,12 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>RFID-รายการกิจกรรม</title>
-  </head>
-  <body>
+@extends('layouts.navbar')
 
 
-<div class="container" align="center">
-<div><h2>รายการกิจกรรม</h2></div></br>
+
+@section('content')
+@include('schedule._form')
+
+<div class="container">
+<div><h3>รายการกิจกรรม</h3></div></br>
 
 <table class="table">
   <thead>
@@ -23,33 +15,43 @@
         <th scope="col">รหัสกิจกรรม</th>
         <th scope="col">ชื่อกิจกรรม</th>
         <th scope="col">ชื่อย่อ</th>
-        <th scope="col">เวลาเริ่มต้น</th>
-        <th scope="col">เวลาสิ้นสุด</th>
+        <th scope="col">ช่วงเวลากิจกรรม</th>
+<!--         <th scope="col">เวลาสิ้นสุด</th>
         <th scope="col">เวลาก่อนกิจกรรม</th>
         <th scope="col">เวลาหลังกิจกรรม</th>
         <th scope="col">เวลาสาย</th>
         <th scope="col">รหัสภาระงาน</th>
         <th scope="col">ชื่อภาระงาน</th>
         <th scope="col">เครื่องทาบบัตร</th>
-        <th scope="col">เวลา</th>
+        <th scope="col">เวลา</th> -->
     </tr>
   </thead>
   <tbody>
     @foreach($tasks as $task)
     <tr>    
-        <th>{{ $task->id }}</th>
-        <th>{{ $task->task_id }}</th>
-        <th>{{ $task->task_name }}</th>
-        <th>{{ $task->task_Acronym }}</th>
-        <th>{{ $task->start_time }}</th>
-        <th>{{ $task->end_time }}</th>
-        <th>{{ $task->before_time }}</th>
-        <th>{{ $task->after_time }}</th>
-        <th>{{ $task->late_time }}</th>
-        <th>{{ $task->job_id }}</th>
-        <th>{{ $task->job_type }}</th>
-        <th>{{ $task->rfid_location }}</th>
-        <th>{{ $task->work_hour }}</th>
+        <td>{{ $task->id }}</td>
+        <td>{{ $task->task_id }}</td>
+        <td>{{ $task->task_name }}</td>
+        <td>{{ $task->task_Acronym }}</td>
+        <td>{{ $task->start_time }} - {{ $task->end_time }}</td>
+        <td>
+<!--           <a class="btn btn-success" role="button" href="{{url('/tasks',$task->id)}}">รายละเอียด</a>
+ -->
+
+        <form action="/schedule/tasks/{{ $task->id }}">
+            @csrf
+            @method('PACTH')
+            <button class="btn btn-success" type="submit">รายละเอียด</button>
+        </form>
+        </td>
+<!--         <td>{{ $task->end_time }}</td> -->
+<!--         <td>{{ $task->before_time }}</td>
+        <td>{{ $task->after_time }}</td>
+        <td>{{ $task->late_time }}</td>
+        <td>{{ $task->job_id }}</td>
+        <td>{{ $task->job_type }}</td>
+        <td>{{ $task->rfid_location }}</td>
+        <td>{{ $task->work_hour }}</td> -->
         
 
     </tr>
@@ -57,6 +59,4 @@
   </tbody> 
 </table>
 </div>
-
-  </body>
-</html>
+@endsection

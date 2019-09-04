@@ -11,16 +11,18 @@
 |
 */
 
-Route::get('/rfid', function () {
-    return view('rfid');
-});
+// Route::get('/rfid', function () {
+//     return view('rfid');
+// });
 
-Route::get('/schedule', function () {
-    return view('schedule/activity');
-});
+// Route::get('/schedule', function () {
+//     return view('schedule/activity');
+// });
 
-Route::get('/index', 'TaskController@index');
-Route::get('/create', 'TaskController@create');
-Route::post('/save', 'TaskController@store');
+Route::get('/schedule/index', 'TaskController@index');
+Route::get('/schedule/create', 'TaskController@create');
+Route::post('/schedule/save', 'TaskController@store');
+Route::get('/schedule/tasks/{id}','TaskController@edit');
+Route::patch('/schedule/tasks/{id}','TaskController@update');
 
 
