@@ -69,7 +69,10 @@ class TaskController extends Controller
             'task_name.required' => 'ใส่ชื่องาน',
             'task_name.max' => 'กรอกได้ไม่เกิน 50 ตัวอักษร'
         ];
-        return \App\Task::create(request()->all());
+        $task = \App\Task::create(request()->all());
+        $task->save();
+
+        return redirect('schedule/index');
         
 
 
