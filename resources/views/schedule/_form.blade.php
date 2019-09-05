@@ -83,6 +83,15 @@
 			    <label for="rfid_location">เครื่องทาบบัตร:</label>
 			    <select id="rfid_location" class="form-control" id="rfid_location" name="rfid_location">
 			    	{{--<option>{{ $task->rfid_location }}</option>--}}
+			    	
+			    	@if(old($task->rfid_location, isset($task) ? $task->rfid_location : '')
+			    		<option value="" hidden select>เลือกเครื่องทาบบัตร</option>
+			    		<option value="1" >ห้องวีกิจฯ</option>
+			    		<option value="2" >ห้องจงจินต์</option>
+			    	@else
+			    		<option>{{ $task->rfid_location }}</option>
+			    	@endif
+
 			    </select>
 			</div>
 			<div class="form-group col-sm-2">
