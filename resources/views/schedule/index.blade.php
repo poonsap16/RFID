@@ -3,9 +3,9 @@
 
 
 @section('content')
+<div class="col-12">
 @include('schedule._form')
 
-<div class="container">
 <div><h3>รายการกิจกรรม</h3></div></br>
 
 <table class="table">
@@ -34,26 +34,12 @@
         <td>{{ $task->task_name }}</td>
         <td>{{ $task->task_Acronym }}</td>
         <td>{{ $task->start_time }} - {{ $task->end_time }}</td>
+
+
         <td>
-<!--           <a class="btn btn-success" role="button" href="{{url('/tasks',$task->id)}}">รายละเอียด</a>
- -->
-
-        <form action="/schedule/tasks/{{ $task->id }}">
-            @csrf
-            @method('PACTH')
-            <button class="btn btn-success" type="submit">รายละเอียด</button>
-        </form>
+          <a class="btn btn-success" role="button" href="{{url('/schedule/show',$task->id)}}">รายละเอียด</a>
         </td>
-<!--         <td>{{ $task->end_time }}</td> -->
-<!--         <td>{{ $task->before_time }}</td>
-        <td>{{ $task->after_time }}</td>
-        <td>{{ $task->late_time }}</td>
-        <td>{{ $task->job_id }}</td>
-        <td>{{ $task->job_type }}</td>
-        <td>{{ $task->rfid_location }}</td>
-        <td>{{ $task->work_hour }}</td> -->
-        
-
+        </td>
     </tr>
     @endforeach
   </tbody> 

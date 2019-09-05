@@ -86,7 +86,15 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = \App\Task::all(); 
+        $task = \App\Task::find($id);
+        //$tasks = DB::table('tasks')->where
+
+
+
+        
+        //return $task;
+        return view('schedule.index')->with(['tasks' => $tasks,'task' => $task]);
     }
 
     /**
