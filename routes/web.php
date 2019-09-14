@@ -28,4 +28,6 @@ Route::get('/schedule/tasks/{id}','TaskController@edit');
 
 Route::patch('/schedule/tasks/{id}','TaskController@update');
 
+Route::get('/machine/create', 'Rfid_machineController@create');
+Route::post('/machine/save', 'Rfid_machineController@store');
 
