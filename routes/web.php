@@ -28,6 +28,11 @@ Route::get('/schedule/tasks/{id}','TaskController@edit');
 
 Route::patch('/schedule/tasks/{id}','TaskController@update');
 
+Route::get('/machine/index', 'Rfid_machineController@index');
 Route::get('/machine/create', 'Rfid_machineController@create');
 Route::post('/machine/save', 'Rfid_machineController@store');
+Route::get('/machine/show/{id}','Rfid_machineController@show');
 
+Route::get('/calendar/index', 'CalendarController@index');
+Route::get('/calendar/create', 'CalendarController@create');
+Route::post('/calendar/save', 'CalendarController@store');

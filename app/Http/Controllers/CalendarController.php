@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Rfid_machineController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,9 @@ class Rfid_machineController extends Controller
      */
     public function index()
     {
-        $rfid_machine = \App\Rfid_machine::all(); 
-        return view('machines.index')->with(['rfid_machines' => $rfid_machine]);  
+        $calendars = \App\Calendar::all();
+        //return view('calendar.index')->with(['calendars' => $calendars]);
+        //return view('machines.index')->with(['rfid_machines' => $rfid_machine]); 
     }
 
     /**
@@ -24,7 +25,8 @@ class Rfid_machineController extends Controller
      */
     public function create()
     {
-        return view('machines.create');
+        $tasks = \App\Task::all();
+        return view('calendars.create')->with(['tasks' => $tasks]);;
     }
 
     /**
@@ -35,10 +37,15 @@ class Rfid_machineController extends Controller
      */
     public function store(Request $request)
     {
-        $rfid_machine = \App\Rfid_machine::create(request()->all());
-        $rfid_machine->save();
+        //$calendar = \App\Calendar::create(request()->all());
+        $calendar = new \App\Calendar();
+        $calendar->date = $request->input('date');        
+        $calendar->task_id = $request->input('task_id');
+        $calendar->save();
 
-        return redirect('machine/create');
+        //return $calendar;
+
+        return redirect('calendar/create');
     }
 
     /**
@@ -49,9 +56,7 @@ class Rfid_machineController extends Controller
      */
     public function show($id)
     {
-        $rfid_machines = \App\Rfid_machine::all();
-        $rfid_machine = \App\Rfid_machine::find($id); 
-        return view('machine.index')->with(['rfid_machines' => $rfid_machines, 'rfid_machine' => $rfid_machine]);
+        //
     }
 
     /**
