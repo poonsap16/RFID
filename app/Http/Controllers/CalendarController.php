@@ -13,8 +13,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $calendars = \App\Calendar::all();
-        //return view('calendar.index')->with(['calendars' => $calendars]);
+        $calendar = \App\Calendar::all();
+        $tasks = \App\Task::all();
+        return view('calendars.index')->with(['calendars' => $calendar, 'tasks' => $tasks]);
         //return view('machines.index')->with(['rfid_machines' => $rfid_machine]); 
     }
 
@@ -40,12 +41,12 @@ class CalendarController extends Controller
         //$calendar = \App\Calendar::create(request()->all());
         $calendar = new \App\Calendar();
         $calendar->date = $request->input('date');        
-        $calendar->task_id = $request->input('task_id');
+        $calendar->task_id = $request->input('task_job_id');
         $calendar->save();
 
         //return $calendar;
 
-        return redirect('calendar/create');
+        return redirect('calendar/index');
     }
 
     /**

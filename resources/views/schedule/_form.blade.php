@@ -33,8 +33,8 @@
 
 		<div class="form-row">
 		  	<div class="form-group  col-sm-2">
-			    <label for="task_id">รหัสกิจกรรม</label>
-			    <input type="number" class="form-control" id="task_id" name="task_id" value="{{old('task_id',isset($task) ? $task -> task_id:'')}}">
+			    <label for="task_job_id">รหัสกิจกรรม</label>
+			    <input type="number" class="form-control" id="task_job_id" name="task_job_id" value="{{old('task_job_id',isset($task) ? $task -> task_job_id:'')}}">
 			</div>
 			<div class="form-group col-sm-6">
 			    <label for="task_name">ชื่อกิจกรรม:</label>

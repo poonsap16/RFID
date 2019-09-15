@@ -17,25 +17,41 @@
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #20B2AA;">
 
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/home">{{ env('APP_NAME')}}</a>
+      <a class="navbar-brand js-scroll-trigger" href="/rfid">{{ env('APP_NAME')}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/home">หน้าแรก</a>
           </li>
+
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            จัดการข้อมูลหลัก
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
+            <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+
+
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/calendar">ปฏิทินกิจกรรม</a>
+            <a class="nav-link js-scroll-trigger" href="/calendar/index">ปฏิทินกิจกรรม</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/report">รายงาน</a>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-dark">เข้าสู่ระบบ</button>
-          </li>
-         </ul>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <button type="button" class="btn btn-dark">เข้าสู่ระบบ</button>
+        </form>
       </div>
     </div>
    </nav>

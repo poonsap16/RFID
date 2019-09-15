@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $fillable = [
-            'task_id',
+            'task_job_id',
             'task_name',
             'task_Acronym',
             'start_time',
@@ -20,4 +20,7 @@ class Task extends Model
             'rfid_location',
             'work_hour'
     ];
+    public function calendars(){
+        return $this->hasMany(Calendar::class);
+    }
 }

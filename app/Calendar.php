@@ -10,4 +10,9 @@ class Calendar extends Model
             'date',
             'task_id'
     ];
+
+    public function task(){
+        return $this->belongsTo(Task::class);
+
+    }
 }

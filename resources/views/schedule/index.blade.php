@@ -30,7 +30,7 @@
     @foreach($tasks as $task)
     <tr>    
         <td>{{ $task->id }}</td>
-        <td>{{ $task->task_id }}</td>
+        <td>{{ $task->task_job_id }}</td>
         <td>{{ $task->task_name }}</td>
         <td>{{ $task->task_Acronym }}</td>
         <td>{{ $task->start_time }} - {{ $task->end_time }}</td>

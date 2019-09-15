@@ -1,18 +1,13 @@
-@extends('layouts.navbar')
+
+@if(isset($rfid_machine))
+    <form action="{{url('/calendar/show',$calendar->id)}}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="PATCH"> 
+@else
+    <form action="save" method="post" enctype="multipart/form-data">
+@endif
+    <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br> 
 
 
-
-@section('content')
-
-	<form class="border border-light p-5" action="save" method="post">
-	  <div><h3>กิจกรรม</h3></div>	
-
-	  <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br>
-	<!--    @if($message = Session::get('success'))
-	     <div class="alert alert-success">
-	       {{$message}}
-	     </div>
-	   @endif
 	   @if($errors->any())
 	     <div class="alert alert-danger">
 	       <ul>
@@ -21,15 +16,28 @@
 	         @endforeach
 	       </ul>
 	     </div>
+	   @endif
+
+
+
+	<form class="border border-light p-2" action="/calendar/save" method="post">
+	  <!-- <div><h3>เพิ่มกิจกรรม</h3></div>	 -->
+
+	  <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br>
+<!-- 	   @if($message = Session::get('success'))
+	     <div class="alert alert-success">
+	       {{$message}}
+	     </div>
 	   @endif -->
 
 		<div class="form-row">
 		  	<div class="form-group  col-sm-2">
 			    <label for="date">วันที่</label>
-			    <input type="date" class="form-control" id="date" name="date">
+			    <input type="date" class="form-control" id="date" name="date" value="{{old('date',isset($calendar) ? $calendar->date:'')}}">
 			</div>
 			<div class="form-group col-sm-4">
 			    <label for="task_job_id">กิจกรรม:</label>
+
 				<select class="form-control" id="task_job_id" name="task_job_id">
                   <option value="" hidden select>เลือกกิจกรรม</option>
                   @foreach($tasks as $task)
@@ -45,6 +53,3 @@
 
 	  <button type="submit" class="btn btn-primary">บันทึก</button>
 	</form> 
-
-
-@endsection
