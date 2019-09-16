@@ -83,9 +83,11 @@
 			    <label for="rfid_location">เครื่องทาบบัตร:</label>
 			    <select id="rfid_location" class="form-control" id="rfid_location" name="rfid_location">
 			    	<option selected>Choose...</option>
-			        <option>ห้องวีกิจฯ</option>
-			        <option>ห้องจงจินต์ฯ</option>
-			        <option>Moblie 1</option>
+
+                  	@foreach($tasks as $task)
+                    	<option value="{{$task['id']}}">{{$task['task_name']}}</option>
+                  	@endforeach
+                  	
 			    </select>
 			</div>
 			<div class="form-group col-sm-2">

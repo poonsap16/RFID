@@ -20,8 +20,8 @@ class TaskController extends Controller
     {
         $tasks = \App\Task::all(); 
         
-
-        return view('schedule.index')->with(['tasks' => $tasks]);  
+        $rfid_machines = \App\Rfid_machine::all();
+        return view('schedule.index')->with(['tasks' => $tasks,'rfid_machines' => $rfid_machines]);  
     }
 
     /**
@@ -31,7 +31,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('schedule.create');
+        $rfid_machines = \App\Rfid_machine::all();
+        return view('schedule.create')->with(['rfid_machines' => $rfid_machines]);
     }
 
     /**

@@ -38,7 +38,7 @@ class Rfid_machineController extends Controller
         $rfid_machine = \App\Rfid_machine::create(request()->all());
         $rfid_machine->save();
 
-        return redirect('machine/create');
+        return redirect('machine/index');
     }
 
     /**

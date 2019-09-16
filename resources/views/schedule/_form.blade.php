@@ -82,6 +82,15 @@
 			<div class="form-group col-sm-2">
 			    <label for="rfid_location">เครื่องทาบบัตร:</label>
 
+			    <select id="rfid_location" class="form-control" id="rfid_location" name="rfid_location">
+			    	<option value="" hidden selected>เลือกเครื่อง...</option>
+
+                  	@foreach($rfid_machines as $rfid_machine)
+                    	<option value="{{$rfid_machine['id']}}">{{$rfid_machine['machine_name']}}</option>
+                  	@endforeach
+                  	
+			    </select>
+
 			    
 			</div>
 			<div class="form-group col-sm-2">

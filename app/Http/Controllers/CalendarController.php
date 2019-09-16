@@ -27,7 +27,7 @@ class CalendarController extends Controller
     public function create()
     {
         $tasks = \App\Task::all();
-        return view('calendars.create')->with(['tasks' => $tasks]);;
+        return view('calendars.create')->with(['tasks' => $tasks]);
     }
 
     /**
