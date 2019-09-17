@@ -17,7 +17,7 @@ class Task extends Model
             'late_time',
             'job_id',
             'job_type',
-            'rfid_location',
+            'rfid_machine_id',
             'work_hour'
     ];
     public function calendars(){

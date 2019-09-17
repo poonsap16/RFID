@@ -80,8 +80,8 @@
 
 	  	<div class="form-row">
 			<div class="form-group col-sm-2">
-			    <label for="rfid_location">เครื่องทาบบัตร:</label>
-			    <select id="rfid_location" class="form-control" id="rfid_location" name="rfid_location">
+			    <label for="rfid_machine_id">เครื่องทาบบัตร:</label>
+			    <select id="rfid_machine_id" class="form-control" id="rfid_machine_id" name="rfid_machine_id">
 			    	<option selected>Choose...</option>
 
                   	@foreach($tasks as $task)

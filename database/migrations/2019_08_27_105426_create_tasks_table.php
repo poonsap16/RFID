@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('task_id');
+            $table->integer('task_job_id');
             $table->string('task_name',50);
             $table->string('task_Acronym',20);
             $table->time('start_time');
@@ -25,7 +25,7 @@ class CreateTasksTable extends Migration
             $table->integer('late_time');
             $table->string('job_id');
             $table->string('job_type');
-            $table->string('rfid_location');
+            $table->integer('rfid_machine_id');
             $table->float('work_hour',2,1);
             $table->timestamps();
         });

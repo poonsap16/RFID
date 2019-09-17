@@ -80,9 +80,9 @@
 			    <input type="text" class="form-control" id="job_type" name="job_type" value="{{old('job_type',isset($task) ? $task -> job_type:'')}}">
 			</div>
 			<div class="form-group col-sm-2">
-			    <label for="rfid_location">เครื่องทาบบัตร:</label>
+			    <label for="rfid_machine_id">เครื่องทาบบัตร:</label>
 
-			    <select id="rfid_location" class="form-control" id="rfid_location" name="rfid_location">
+			    <select id="rfid_machine_id" class="form-control" id="rfid_machine_id" name="rfid_machine_id">
 			    	<option value="" hidden selected>เลือกเครื่อง...</option>
 
                   	@foreach($rfid_machines as $rfid_machine)
