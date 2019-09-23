@@ -23,21 +23,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
-          <li class="nav-item">
+<!--      <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/home">หน้าแรก</a>
-          </li>
+          </li> -->
 
-       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            จัดการข้อมูลหลัก
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
-            <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                จัดการข้อมูลหลัก
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
+                <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">เมนู ...</a>
+              </div>
+          </li>
 
 
 

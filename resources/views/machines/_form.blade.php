@@ -48,7 +48,7 @@
 			</div>
 		  	<div class="form-group  col-sm-2">
 			    <label for="floor">ชั้น</label>
-			    <input type="number" max="10" min="1"class="form-control" id="floor" name="floor" value="{{old('machine_name',isset($rfid_machine) ? $rfid_machine -> floor:'')}}">
+			    <input type="number" max="30" min="1"class="form-control" id="floor" name="floor" value="{{old('machine_name',isset($rfid_machine) ? $rfid_machine -> floor:'')}}">
 			</div>
 	  	</div>
 		

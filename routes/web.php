@@ -31,3 +31,10 @@ Route::get('/machine/show/{id}','Rfid_machineController@show');
 Route::get('/calendar/index', 'CalendarController@index');
 Route::get('/calendar/create', 'CalendarController@create');
 Route::post('/calendar/save', 'CalendarController@store');
+
+Route::get('/report', function () {
+    return view('report.index');
+});
+
+Route::get('/upload-file/index', 'UploadController@index');
+Route::post('/upload-file/upload', 'UploadController@upload');
