@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Upload;
 
@@ -16,7 +17,7 @@ class UploadController extends Controller
      */
     public function index()
     {
-        return view('upload_files.index');
+        return view('upload_files.upload');
     }
 
     /**
@@ -52,7 +53,21 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+        $upload = Upload::create($request->all());
+
+        if($request->hasFile('file')){
+            $path = $request->file('file')->store('/public');
+            //$path = $request->file('file')->storeAS('/', $request->file('file')->getClientOriginalName());
+            $filename = pathinfo($path);
+            $upload->file = $filename['basename'];
+            $upload->update();
+            //return Storage::download($path);
+            return Storage::url($path);
+
+        }else{
+            return 'no file';
+        }
     }
 
     /**

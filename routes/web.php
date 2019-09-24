@@ -38,3 +38,6 @@ Route::get('/report', function () {
 
 Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/upload', 'UploadController@upload');
+
+Route::get('/upload-file/upload', 'UploadController@index');
+Route::post('/upload-file/save', 'UploadController@store');
