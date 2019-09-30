@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Upload;
+use App\Timesheet;
 
 
 class UploadController extends Controller
@@ -27,15 +28,26 @@ class UploadController extends Controller
      */
 
     public function upload(Request $request){
-        $this->validate($request, [
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2049'
-        ]);
 
-        $image = $request->file('file');
-        $new_name = rand(). '.'.$image->getClientOriginalExtension();
-        $image->move(public_path("images"), $new_name);
-        return back()->with('success', 'Image Uploaded Successfully')
-            ->with('path', $new_name);
+        //return $request->all();
+        $upload = Upload::create($request->all());
+
+        if($request->hasFile('file')){
+            $path = $request->file('file')->store('/public');
+            //$path = $request->file('file')->storeAS('/', $request->file('file')->getClientOriginalName());
+            $filename = pathinfo($path);
+            $upload->file = $filename['basename'];
+            $upload->update();
+            //return Storage::download($path);
+            return Storage::url($path);
+
+        }else{
+            return 'no file';
+        }
+
+
+
+        
 
 
     }
@@ -53,18 +65,18 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
         $upload = Upload::create($request->all());
 
         if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');
-            //$path = $request->file('file')->storeAS('/', $request->file('file')->getClientOriginalName());
+
+            $time_stamps = new \App\Imports\TimesheetsImport();
+            $time_stamps->import(storage_path('app/'.$path));
             $filename = pathinfo($path);
             $upload->file = $filename['basename'];
             $upload->update();
-            //return Storage::download($path);
-            return Storage::url($path);
 
+            return redirect('upload-file/upload');
         }else{
             return 'no file';
         }
