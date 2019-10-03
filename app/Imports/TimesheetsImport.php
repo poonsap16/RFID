@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use App\Timesheet;
 use Illuminate\Support\Facades\Validator;
 
+
 class TimesheetsImport implements ToCollection, WithHeadingRow
 {
     use Importable;
@@ -20,7 +21,13 @@ class TimesheetsImport implements ToCollection, WithHeadingRow
         \Log::info($collection);
         \Log::info($collection->toArray());
         Validator::make($collection->toArray(),[
-            '*sap_id' => 'required'
+            '*.rfid_no' => 'required',
+            '*.sap_id' => 'required',
+            '*.date_stamp' => 'required',
+            '*.time_stamp' => 'required',
+            '*.rfid_position' => 'required',
+            '*.rfid_status' => 'required',
+            '*.rfid_door' => 'required'
         ])->validate();
 
         foreach($collection as $row)
@@ -38,6 +45,7 @@ class TimesheetsImport implements ToCollection, WithHeadingRow
             ]);
         }
     }
+
     public function headingRow(): int
     {
     	return 3;

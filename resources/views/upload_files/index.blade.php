@@ -10,7 +10,7 @@
                     Upload Validation Error<br><br>
                     <ul>
                         @foreach($errors->all() as $error)
-                        <li>{{ $error}}</li>
+                        <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -23,7 +23,7 @@
                 </div>
                 <img src="/images/{{ Session::get('path') }}" widht="300" />
                 @endif
-                <form action="upload" method="post" enctype="multipart/form-data">
+                <form action="save" method="post" enctype="multipart/form-data">
                     <label for="file">Select file to upload:</label>
                     <input type="file" name="file" id="file">
                     <input class="btn btn-primary" type="submit" value="Upload" name="submit">

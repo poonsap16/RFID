@@ -18,7 +18,7 @@ class UploadController extends Controller
      */
     public function index()
     {
-        return view('upload_files.upload');
+        return view('upload_files.index');
     }
 
     /**
@@ -76,7 +76,7 @@ class UploadController extends Controller
             $upload->file = $filename['basename'];
             $upload->update();
 
-            return redirect('upload-file/upload');
+            return redirect('upload-file/index');
         }else{
             return 'no file';
         }
