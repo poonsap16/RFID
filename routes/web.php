@@ -15,6 +15,9 @@ Route::get('/rfid', function () {
     return view('rfid');
 });
 
+Route::get('/menu', function() {
+	return view('layouts/menu');
+});
 
 Route::get('/schedule/index', 'TaskController@index');
 Route::get('/schedule/create', 'TaskController@create');
