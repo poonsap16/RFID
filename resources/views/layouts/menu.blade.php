@@ -7,10 +7,8 @@
 
         <title>@yield('title')</title>
 
-
-
-    <link rel="stylesheet" href="{{url('/bootstrap4/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('/fontawesome/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('/css/bootstrap/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('/css/font-awesome/css/font-awesome.min.css')}}">
 
     </head>
 
@@ -63,7 +61,7 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#"><i class="fas fa-home">Home</i></a>
+  <a href="#"><i class="fa fa-home fa-lg">Home</i></a>
 
   <a href="#">Services</a>
   <a href="#">Clients</a>
@@ -86,9 +84,9 @@ function closeNav() {
    
 </body>
 
-<script type="text/javascript" src="{{url('/js/jquery-3.4.0.min.js') }}"></script>
-
-
+<script src="{{url('/js/jquery-3.4.0.min.js') }}"></script>
+<script src="{{url('/js/popper.min.js')}}"></script>
+<script src= "{{url('/js/bootstrap/bootstrap.min.js')}}"></script>
 
 </html>
 

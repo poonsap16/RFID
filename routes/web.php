@@ -19,6 +19,10 @@ Route::get('/menu', function() {
 	return view('layouts/menu');
 });
 
+Route::get('/test', function() {
+	return view('calendars/test');
+});
+
 Route::get('/schedule/index', 'TaskController@index');
 Route::get('/schedule/create', 'TaskController@create');
 Route::post('/schedule/save', 'TaskController@store');
