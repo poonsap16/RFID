@@ -30,7 +30,7 @@ class UploadController extends Controller
     public function upload(Request $request){
 
         //return $request->all();
-        $upload = Upload::create($request->all());
+      
 
         if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');
@@ -40,7 +40,7 @@ class UploadController extends Controller
             $upload->update();
             //return Storage::download($path);
             return Storage::url($path);
-
+            $upload = Upload::create($request->all());
         }else{
             return 'no file';
         }
@@ -65,17 +65,17 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        $upload = Upload::create($request->all());
+        // $upload = Upload::create($request->all());
 
         if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');
+            $filename = pathinfo($path);
+
+            $upload = Upload::create($request->except('file') + ['file' => $filename['basename']]);
 
             $time_stamps = new \App\Imports\TimesheetsImport();
             $time_stamps->import(storage_path('app/'.$path));
-            $filename = pathinfo($path);
-            $upload->file = $filename['basename'];
-            $upload->update();
-
+           
             return redirect('upload-file/index');
         }else{
             return 'no file';

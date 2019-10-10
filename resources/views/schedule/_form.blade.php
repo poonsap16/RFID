@@ -85,9 +85,13 @@
 			    <select id="rfid_machine_id" class="form-control" id="rfid_machine_id" name="rfid_machine_id">
 			    	<option value="" hidden selected>เลือกเครื่อง...</option>
 
-                  	@foreach($rfid_machines as $rfid_machine)
-                    	<option value="{{$rfid_machine['id']}}">{{$rfid_machine['machine_name']}}</option>
-                  	@endforeach
+                  @foreach($rfid_machines as $rfid_machine)
+                    @if(old('rfid_machine_id', isset($task) ? $task->rfid_machine_id : '') == $rfid_machine['id'])
+                      <option value="{{$rfid_machine['id']}}" selected>{{$rfid_machine['machine_name']}}</option>
+                    @else
+                      <option value="{{$rfid_machine['id']}}">{{$rfid_machine['machine_name']}}</option>
+                    @endif
+                  @endforeach
                   	
 			    </select>
 

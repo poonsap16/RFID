@@ -39,12 +39,15 @@ Route::get('/calendar/index', 'CalendarController@index');
 Route::get('/calendar/create', 'CalendarController@create');
 Route::post('/calendar/save', 'CalendarController@store');
 
+
 Route::get('/report', function () {
     return view('report.index');
 });
 
-Route::get('/upload-file/index', 'UploadController@index');
-Route::post('/upload-file/upload', 'UploadController@upload');
+// Route::get('/upload-file/index', 'UploadController@index');
+// Route::post('/upload-file/upload', 'UploadController@upload');
 
-Route::get('/upload-file/upload', 'UploadController@index');
+Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
+
+Route::get('/calendar/calendar', 'CalendarController@calendar');

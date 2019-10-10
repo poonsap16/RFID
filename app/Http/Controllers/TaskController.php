@@ -91,11 +91,10 @@ class TaskController extends Controller
         $task = \App\Task::find($id);
         //$tasks = DB::table('tasks')->where
 
-
-
-        
+        $rfid_machines = \App\Rfid_machine::all();
+            
         //return $task;
-        return view('schedule.index')->with(['tasks' => $tasks,'task' => $task]);
+        return view('schedule.index')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
     }
 
     /**

@@ -24,6 +24,13 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function calendar()
+    {
+        return view('calendars.calendar')->with('data',\App\Calendar::all());
+        
+    }
+
     public function create()
     {
         $tasks = \App\Task::all();

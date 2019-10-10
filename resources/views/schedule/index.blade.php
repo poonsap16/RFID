@@ -16,14 +16,6 @@
         <th scope="col">ชื่อกิจกรรม</th>
         <th scope="col">ชื่อย่อ</th>
         <th scope="col">ช่วงเวลากิจกรรม</th>
-<!--         <th scope="col">เวลาสิ้นสุด</th>
-        <th scope="col">เวลาก่อนกิจกรรม</th>
-        <th scope="col">เวลาหลังกิจกรรม</th>
-        <th scope="col">เวลาสาย</th>
-        <th scope="col">รหัสภาระงาน</th>
-        <th scope="col">ชื่อภาระงาน</th>
-        <th scope="col">เครื่องทาบบัตร</th>
-        <th scope="col">เวลา</th> -->
     </tr>
   </thead>
   <tbody>
