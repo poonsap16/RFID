@@ -10,6 +10,7 @@
 <script src='/css/fullcalendar4.3.1/interaction/main.js'></script>
 <script src='/css/fullcalendar4.3.1/daygrid/main.js'></script>
 <script src='/css/fullcalendar4.3.1/timegrid/main.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -22,7 +23,7 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      defaultDate: '2019-08-12',
+      defaultDate: '2019-10-12',
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       selectMirror: true,
@@ -40,64 +41,24 @@
       },
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2019-08-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2019-08-07',
-          end: '2019-08-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-08-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-08-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2019-08-11',
-          end: '2019-08-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-08-12T10:30:00',
-          end: '2019-08-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2019-08-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-08-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2019-08-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2019-08-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2019-08-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2019-08-28'
-        }
-      ]
+      events: function(info, successCallback, failureCallback) {
+          axios.get("{{ url('/get-calendar') }}").then((response) => {
+              let row = [];
+              console.log(response.data)
+              if(response.data !== null){
+                  response.data.forEach((event) => {
+                      row.push({
+                        id: event.id,
+                        title: event.task.task_name,
+                        start: event.date + 'T' + event.task.start_time, //วันที่กิจกรรม และเวลาจัดกิจกรรม
+                        end: event.date + 'T' + event.task.end_time   // วันที่กิจกรรม และเวลาสิ้นสุดกิจกรรม
+                      })
+                  })
+                  successCallback(row)
+              };
+          })
+      }
     });
-
     calendar.render();
   });
 

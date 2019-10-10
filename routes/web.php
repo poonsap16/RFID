@@ -51,3 +51,6 @@ Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
 
 Route::get('/calendar/calendar', 'CalendarController@calendar');
+Route::get('/get-calendar', function(){
+    return \App\Calendar::with('task')->get();
+});
