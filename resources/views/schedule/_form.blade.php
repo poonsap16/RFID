@@ -1,6 +1,6 @@
 
 @if(isset($task))
-    <form action="{{url('/shedule/show',$task->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/schedule/show',$task->id)}}" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
     <form action="save" method="post" enctype="multipart/form-data">

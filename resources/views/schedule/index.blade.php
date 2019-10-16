@@ -29,7 +29,7 @@
 
 
         <td>
-          <a class="btn btn-success" role="button" href="{{url('/schedule/show',$task->id)}}">รายละเอียด</a>
+          <a class="btn btn-success" role="button" href="{{url('/schedule/show',$task->id)}}">แก้ไข</a>
         </td>
         </td>
     </tr>

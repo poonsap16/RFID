@@ -94,7 +94,7 @@ class TaskController extends Controller
         $rfid_machines = \App\Rfid_machine::all();
             
         //return $task;
-        return view('schedule.index')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
+        return view('schedule.edit')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
     }
 
     /**
