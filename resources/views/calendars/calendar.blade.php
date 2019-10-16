@@ -7,7 +7,7 @@
     padding: 0;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
-    /* max-width: 900px; */
+    /* max-width: 1000px; */
     margin: 0 auto;
   }
 </style>
@@ -24,6 +24,7 @@
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+      height: 750,
       plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
       header: {
         left: 'prev,next today',
@@ -55,7 +56,7 @@
           })
       },
       eventClick: function(calEvent, jsEvent, view) {
-        alert("event id => " + calEvent.event.id)
+        window.location.href = `{{ url('calendar/${calEvent.event.id}') }}`
       }
     });
     calendar.render();

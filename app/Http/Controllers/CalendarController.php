@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Calendar;
 
 class CalendarController extends Controller
 {
@@ -47,7 +48,7 @@ class CalendarController extends Controller
 
         //return $calendar;
 
-        return redirect('calendar/index');
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +59,11 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = \App\Task::all();
+
+        $calendar = Calendar::find($id);
+
+        return view('calendars.index')->with(['tasks' => $tasks, 'calendar' => $calendar]);
     }
 
     /**

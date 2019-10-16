@@ -10,10 +10,10 @@
 @endif
 
 @if(isset($rfid_machine))
-    <form class="mt-4 mb-4" action="{{url('/calendar/show',$calendar->id)}}" method="post">
+    <form action="{{url('/calendar/show',$calendar->id)}}" method="post">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
-	<form class="mt-4 mb-4" action="/calendar/save" method="post">
+	<form action="/calendar/save" method="post">
 @endif
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	  	<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -32,7 +32,7 @@
 					<select class="form-control" id="task_job_id" name="task_job_id">
 					<option value="" hidden select>เลือกกิจกรรม</option>
 					@foreach($tasks as $task)
-						<option value="{{$task['id']}}">{{$task['task_name']}}</option>
+						<option value="{{ $task['id'] }}">{{ $task['task_name'] }}</option>
 					@endforeach
 					</select>
 				</div>
