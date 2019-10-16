@@ -17,6 +17,7 @@ class CreateCalendarsTable extends Migration
             $table->bigIncrements('id');
             $table->date('date');
             $table->integer('task_id');
+            $table->string('color');
             $table->timestamps();
         });
     }

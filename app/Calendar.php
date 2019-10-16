@@ -8,7 +8,8 @@ class Calendar extends Model
 {
         protected $fillable = [
             'date',
-            'task_id'
+            'task_id',
+            'color'
     ];
 
     public function task(){

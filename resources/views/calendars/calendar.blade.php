@@ -1,11 +1,28 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8' />
 <link href='/css/fullcalendar4.3.1/core/main.css' rel='stylesheet' />
 <link href='/css/fullcalendar4.3.1/daygrid/main.css' rel='stylesheet' />
 <link href='/css/fullcalendar4.3.1/timegrid/main.css' rel='stylesheet' />
+<style>
+
+  /* body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  } */
+
+  #calendar {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    /* max-width: 900px; */
+    margin: 0 auto;
+  }
+
+</style>
+
+<div id='calendar'></div>
+
 <script src='/css/fullcalendar4.3.1/core/main.js'></script>
 <script src='/css/fullcalendar4.3.1/interaction/main.js'></script>
 <script src='/css/fullcalendar4.3.1/daygrid/main.js'></script>
@@ -51,7 +68,8 @@
                         id: event.id,
                         title: event.task.task_name,
                         start: event.date + 'T' + event.task.start_time, //วันที่กิจกรรม และเวลาจัดกิจกรรม
-                        end: event.date + 'T' + event.task.end_time   // วันที่กิจกรรม และเวลาสิ้นสุดกิจกรรม
+                        end: event.date + 'T' + event.task.end_time,   // วันที่กิจกรรม และเวลาสิ้นสุดกิจกรรม
+                        color  : event.color
                       })
                   })
                   successCallback(row)
@@ -63,25 +81,4 @@
   });
 
 </script>
-<style>
 
-  body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-  }
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-</style>
-</head>
-<body>
-
-  <div id='calendar'></div>
-
-</body>
-</html>

@@ -3,12 +3,12 @@
 
 
 @section('content')
-<div class="col-12">
+<div class="col-12 mx-auto">
 @include('calendars._form')
 
-<div><h3>รายการกิจกรรม</h3></div></br>
-
-<table class="table">
+<!-- <div><h3>รายการกิจกรรม</h3></div></br> -->
+@include('calendars.calendar')
+<!-- <table class="table">
   <thead>
     <tr>
         <th scope="col">ลำดับ</th>
@@ -29,6 +29,6 @@
     </tr>
     @endforeach
   </tbody> 
-</table>
+</table> -->
 </div>
 @endsection
