@@ -21,7 +21,7 @@
 			<div class="col-12">
 				<div class="form-group">
 					<label for="date">วันที่</label>
-					<input type="date" class="form-control" id="date" name="date" value="{{old('date',isset($calendar) ? $calendar->date:'')}}">
+					<input type="date" class="form-control" id="date" name="date" value="{{ old('date', isset($calendar) ? $calendar->date:'') }}">
 				</div>
 			</div>
 		</div>
