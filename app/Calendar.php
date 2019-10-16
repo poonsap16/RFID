@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendar extends Model
 {
-        protected $fillable = [
-            'date',
-            'task_id',
-            'color'
+    protected $fillable = [
+        'date',
+        'task_id',
+        'color'
     ];
 
     public function task(){
