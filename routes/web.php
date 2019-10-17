@@ -26,14 +26,6 @@ Route::post('/schedule/save', 'TaskController@store');
 Route::get('/menu', function() {
 	return view('layouts/menu');
 });
-
-<<<<<<< HEAD
-
-
-
-
-
-=======
 Route::get('/schedule/index', 'TaskController@index');
 Route::get('/schedule/create', 'TaskController@create');
 Route::post('/schedule/save', 'TaskController@store');
