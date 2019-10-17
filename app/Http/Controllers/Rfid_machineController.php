@@ -6,22 +6,14 @@ use Illuminate\Http\Request;
 
 class Rfid_machineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $rfid_machine = \App\Rfid_machine::all(); 
         return view('machines.index')->with(['rfid_machines' => $rfid_machine]);  
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('machines.create');
@@ -35,6 +27,22 @@ class Rfid_machineController extends Controller
      */
     public function store(Request $request)
     {
+        $taskCreateValidateRules = [
+            'machine_name' => 'required',
+            'location' => 'required',
+            'building' => 'required',
+            'floor' => 'required'
+        ];
+
+        $taskCreatevalidateMessages = [
+        'machine_name.required' => 'กรุณาใส่ชื่อเครื่อง <a style="cursor: pointer;" onclick="document.getElementById(' . "'machine_name'" . ').focus()"><i>ประเภทงาน</i> <b>ด้วย</b></a>',
+        'location.required' => 'กรุณาใส่สถานที่ <a style="cursor: pointer;" onclick="document.getElementById(' . "'location'" . ').focus()"><i>ชื่องาน</i> <b>ด้วยสิอีช่อ</b></a>',
+        'building.required' => 'กรุณาใส่ชื่อตึก <a style="cursor: pointer;" onclick="document.getElementById(' . "'building'" . ').focus()"><i>ประเภทงาน</i> <b>ด้วย</b></a>',
+        'floor.required' => 'กรุณาใส่ชั้น <a style="cursor: pointer;" onclick="document.getElementById(' . "'floor'" . ').focus()"><i>ชื่องาน</i> <b>ด้วย</b></a>'
+        ];
+
+        request()->validate($taskCreateValidateRules, $taskCreatevalidateMessages);
+
         $rfid_machine = \App\Rfid_machine::create(request()->all());
         $rfid_machine->save();
 
@@ -51,7 +59,7 @@ class Rfid_machineController extends Controller
     {
         $rfid_machines = \App\Rfid_machine::all();
         $rfid_machine = \App\Rfid_machine::find($id); 
-        return view('machine.index')->with(['rfid_machines' => $rfid_machines, 'rfid_machine' => $rfid_machine]);
+        return view('machines.index')->with(['rfid_machines' => $rfid_machines, 'rfid_machine' => $rfid_machine]);
     }
 
     /**
