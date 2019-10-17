@@ -16,7 +16,7 @@
   			<h3>เกิดข้อผิดพลาด</h3>
 	       	<ul>
 	        	@foreach($errors->all() as $error)
-	           		<li> {{$error}}</li>
+	           		<li> {!! $error !!}</li>
 	         	@endforeach
 	       	</ul>
 	    </div>

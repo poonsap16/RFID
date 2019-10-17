@@ -35,10 +35,10 @@ class Rfid_machineController extends Controller
         ];
 
         $taskCreatevalidateMessages = [
-        'machine_name.required' => 'กรุณาใส่ชื่อเครื่อง <a style="cursor: pointer;" onclick="document.getElementById(' . "'machine_name'" . ').focus()"><i>ประเภทงาน</i> <b>ด้วย</b></a>',
-        'location.required' => 'กรุณาใส่สถานที่ <a style="cursor: pointer;" onclick="document.getElementById(' . "'location'" . ').focus()"><i>ชื่องาน</i> <b>ด้วยสิอีช่อ</b></a>',
-        'building.required' => 'กรุณาใส่ชื่อตึก <a style="cursor: pointer;" onclick="document.getElementById(' . "'building'" . ').focus()"><i>ประเภทงาน</i> <b>ด้วย</b></a>',
-        'floor.required' => 'กรุณาใส่ชั้น <a style="cursor: pointer;" onclick="document.getElementById(' . "'floor'" . ').focus()"><i>ชื่องาน</i> <b>ด้วย</b></a>'
+        'machine_name.required' => 'กรุณาใส่ <a style="cursor: pointer;" onclick="document.getElementById('. "'machine_name'" . ').focus()"<i>ชื่อเครื่อง</i>ด้วย',
+        'location.required' => 'กรุณาใส่สถานที่ด้วย',
+        'building.required' => 'กรุณาใส่ชื่อตึกด้วย',
+        'floor.required' => 'กรุณาใส่ชั้นด้วย'
         ];
 
         request()->validate($taskCreateValidateRules, $taskCreatevalidateMessages);
@@ -82,7 +82,8 @@ class Rfid_machineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rfid_machine = \App\Rfid_machine::find($id)->update($request->all());
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว'); 
     }
 
     /**

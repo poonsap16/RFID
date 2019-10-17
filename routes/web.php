@@ -30,7 +30,7 @@ Route::get('/schedule/index', 'TaskController@index');
 Route::get('/schedule/create', 'TaskController@create');
 Route::post('/schedule/save', 'TaskController@store');
 Route::get('/schedule/show/{id}','TaskController@show');
->>>>>>> cf0a0f24c7d41b8265e768f54eea02696b6ab428
+
 Route::get('/schedule/tasks/{id}','TaskController@edit');
 Route::patch('/schedule/tasks/{id}','TaskController@update');
 
@@ -38,6 +38,7 @@ Route::get('/machine/index', 'Rfid_machineController@index');
 Route::get('/machine/create', 'Rfid_machineController@create');
 Route::post('/machine/save', 'Rfid_machineController@store');
 Route::get('/machine/show/{id}','Rfid_machineController@show');
+Route::patch('/machine/show/{id}','Rfid_machineController@update');
 
 Route::get('/calendar/index', 'CalendarController@index');
 Route::get('/calendar/create', 'CalendarController@create');
