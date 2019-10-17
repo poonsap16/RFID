@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Calendar;
 
 class CalendarController extends Controller
 {
@@ -24,13 +25,6 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function calendar()
-    {
-        return view('calendars.calendar')->with('data',\App\Calendar::all());
-        
-    }
-
     public function create()
     {
         $tasks = \App\Task::all();
@@ -49,11 +43,12 @@ class CalendarController extends Controller
         $calendar = new \App\Calendar();
         $calendar->date = $request->input('date');        
         $calendar->task_id = $request->input('task_job_id');
+        $calendar->color = $request->input('color');
         $calendar->save();
 
         //return $calendar;
 
-        return redirect('calendar/index');
+        return redirect()->back();
     }
 
     /**
@@ -64,7 +59,11 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = \App\Task::all();
+
+        $calendar = Calendar::find($id);
+
+        return view('calendars.index')->with(['tasks' => $tasks, 'calendar' => $calendar]);
     }
 
     /**

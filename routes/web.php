@@ -27,11 +27,18 @@ Route::get('/menu', function() {
 	return view('layouts/menu');
 });
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+Route::get('/schedule/index', 'TaskController@index');
+Route::get('/schedule/create', 'TaskController@create');
+Route::post('/schedule/save', 'TaskController@store');
+Route::get('/schedule/show/{id}','TaskController@show');
+>>>>>>> cf0a0f24c7d41b8265e768f54eea02696b6ab428
 Route::get('/schedule/tasks/{id}','TaskController@edit');
 Route::patch('/schedule/tasks/{id}','TaskController@update');
 
@@ -55,4 +62,7 @@ Route::get('/report', function () {
 Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
 
-Route::get('/calendar/calendar', 'CalendarController@calendar');
+Route::get('/calendar/{id}', 'CalendarController@show');
+Route::get('/get-calendar', function(){
+    return \App\Calendar::with('task')->get();
+});

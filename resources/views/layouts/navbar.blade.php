@@ -26,7 +26,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
-<!--      <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/home">หน้าแรก</a>
           </li> -->
 
@@ -58,8 +58,6 @@
       </div>
     </div>
    </nav>
-   </div>
-
 <div class="container-fuild">
   @yield('content')
 </div>
