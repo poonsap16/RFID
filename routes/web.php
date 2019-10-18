@@ -21,25 +21,19 @@ Route::post('/schedule/save', 'TaskController@store');
 Route::get('/schedule/show/{id}','TaskController@show');
 Route::patch('/schedule/show/{id}','TaskController@update');
 
+Route::get('/machine/index', 'Rfid_machineController@index');
+Route::get('/machine/create', 'Rfid_machineController@create');
+Route::post('/machine/save', 'Rfid_machineController@store');
+Route::get('/machine/show/{id}','Rfid_machineController@show');
+Route::patch('/machine/show/{id}','Rfid_machineController@update');
 
 //
 
 Route::get('/menu', function() {
 	return view('layouts/menu');
 });
-// Route::get('/schedule/index', 'TaskController@index');
-// Route::get('/schedule/create', 'TaskController@create');
-// Route::post('/schedule/save', 'TaskController@store');
-// Route::get('/schedule/show/{id}','TaskController@show');
 
-Route::get('/schedule/tasks/{id}','TaskController@edit');
-Route::patch('/schedule/tasks/{id}','TaskController@update');
 
-Route::get('/machine/index', 'Rfid_machineController@index');
-Route::get('/machine/create', 'Rfid_machineController@create');
-Route::post('/machine/save', 'Rfid_machineController@store');
-Route::get('/machine/show/{id}','Rfid_machineController@show');
-Route::patch('/machine/show/{id}','Rfid_machineController@update');
 
 Route::get('/calendar/index', 'CalendarController@index');
 Route::get('/calendar/create', 'CalendarController@create');
@@ -57,6 +51,7 @@ Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
 
 Route::get('/calendar/{id}', 'CalendarController@show');
+Route::patch('/calendar/{id}','CalendarController@update');
 Route::get('/get-calendar', function(){
     return \App\Calendar::with('task')->get();
 });

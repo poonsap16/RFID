@@ -10,7 +10,7 @@
 @endif
 
 @if(isset($calendar))
-    <form action="{{ url('/calendar/show',$calendar->id) }}" method="post">
+    <form action="{{ url('/calendar',$calendar->id) }}" method="post">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
 	<form action="/calendar/save" method="post">
@@ -28,11 +28,11 @@
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
-					<label for="task_job_id">กิจกรรม:</label>
-					<select class="form-control" id="task_job_id" name="task_job_id">
+					<label for="task_id">กิจกรรม:</label>
+					<select class="form-control" id="task_id" name="task_id">
 					<option value="" hidden>เลือกกิจกรรม</option>
 					@foreach($tasks as $task)
-						@if( old('task_job_id', isset($calendar) ? $calendar->task_id : '') == $task['id'])
+						@if( old('task_id', isset($calendar) ? $calendar->task_id : '') == $task['id'])
 							<option value="{{ ($task['id']) }}" selected>{{ $task['task_name'] }}</option>
 						@else
 							<option value="{{ ($task['id']) }}">{{ $task['task_name'] }}</option>
@@ -42,10 +42,11 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
-					<label for="task_job_id">สี:</label>
+					<label for="color">สี:</label>
 					<input type="color" name="color" id="color" value="{{ old('color', isset($calendar) ? $calendar->color : '#48C9B0') }}" style="width:100%; height: 35px;">
 				</div>
 			</div>
