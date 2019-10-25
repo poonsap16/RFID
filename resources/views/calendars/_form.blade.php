@@ -46,6 +46,31 @@
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
+					<label for="start_time">เวลาเริ่มกิจกรรม:</label>
+						<input type="time" class="form-control" name="start_time" id="start_time">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-12">
+				<div class="form-group">
+					<label for="start_time">เวลาเริ่มกิจกรรม:</label>
+						<input type="time" class="form-control" name="start_time" id="start_time">
+				</div>
+			</div>
+		</div>		<div class="form-row">
+			<div class="col-12">
+				<div class="form-group">
+					<label for="start_time">เวลาเริ่มกิจกรรม:</label>
+						<input type="time" class="form-control" name="start_time" id="start_time">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-12">
+				<div class="form-group">
 					<label for="color">สี:</label>
 					<input type="color" name="color" id="color" value="{{ old('color', isset($calendar) ? $calendar->color : '#48C9B0') }}" style="width:100%; height: 35px;">
 				</div>
