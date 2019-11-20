@@ -38,6 +38,8 @@ Route::get('/menu', function() {
 Route::get('/calendar/index', 'CalendarController@index');
 Route::get('/calendar/create', 'CalendarController@create');
 Route::post('/calendar/save', 'CalendarController@store');
+Route::get('/calendar/search','CalendarController@search');
+Route::post('/calendar/searchs','CalendarController@searchs');
 
 
 Route::get('/report', function () {

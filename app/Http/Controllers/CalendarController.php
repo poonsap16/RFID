@@ -43,6 +43,8 @@ class CalendarController extends Controller
         $calendar = new \App\Calendar();
         $calendar->date = $request->input('date');        
         $calendar->task_id = $request->input('task_id');
+        $calendar->start_time = $request->input('start_time');
+        $calendar->end_time = $request->input('end_time');
         $calendar->color = $request->input('color');
         $calendar->save();
 
@@ -66,6 +68,30 @@ class CalendarController extends Controller
         return view('calendars.index')->with(['tasks' => $tasks, 'calendar' => $calendar]);
     }
 
+    public function search()
+    {
+        $tasks = \App\Task::all(); 
+        // $task = \App\Task::find($id);
+        //$tasks = DB::table('tasks')->where
+
+        return view('calendars.search')->with(['tasks' => $tasks]);
+        //$rfid_machines = \App\Rfid_machine::all();
+            
+        //return $task;
+        //return view('schedule.index')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
+    }
+
+    public function searchs(Request $request)
+    {
+
+        //return $request->all();
+        $event = $request->task_id;
+        //return $event;
+        $tasks = \App\Task::find($event);
+        //return $task;
+        return view('calendars.add_calendar')->with(['tasks' => $tasks]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,6 +102,9 @@ class CalendarController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
