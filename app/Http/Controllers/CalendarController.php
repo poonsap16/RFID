@@ -39,7 +39,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        $calendar = \App\Calendar::create(request()->all());
+        //$calendar = \App\Calendar::create(request()->all());
         $calendar = new \App\Calendar();
         $calendar->date = $request->input('date');        
         $calendar->task_id = $request->input('task_id');
@@ -88,7 +88,7 @@ class CalendarController extends Controller
         $event = $request->task_id;
         //return $event;
         $tasks = \App\Task::find($event);
-        //return $task;
+        //return $tasks;
         return view('calendars.add_calendar')->with(['tasks' => $tasks]);
     }
 
@@ -118,6 +118,8 @@ class CalendarController extends Controller
 
         //return $request->all();
         $calendar = Calendar::find($id)->update($request->all());
+        //$calendar = Calendar::find($id);
+        //return $calendar;
         return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว'); 
     }
 

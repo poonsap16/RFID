@@ -10,7 +10,7 @@
 @endif
 
 @if(isset($calendar))
-    <form action="{{ url('/calendar/save') }}" method="post">
+    <form action="{{ url('/calendar',$calendar->id) }}" method="post">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
 	<form action="/calendar/save" method="post">
@@ -23,7 +23,7 @@
 					
                     <label for="task_id">กิจกรรม:</label>
                     <select class="form-control" id="task_id" name="task_id">
-                    <option value="{{ ($tasks['id']) }}" selected>{{ $tasks['task_name'] }}</option>
+                    <option value="{{ old('task_id', isset($tasks) ? $tasks->task_id:'') }}">{{ $tasks['task_name'] }}</option>
 
 
 
@@ -31,7 +31,6 @@
 				</div>
 			</div>
 		</div>
-
 
 
 		<div class="form-row">

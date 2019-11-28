@@ -37,6 +37,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
                 <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
+                <a class="dropdown-item" href="/upload-file/index">โหลดข้อมูลทาบบัตร</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">เมนู ...</a>
               </div>

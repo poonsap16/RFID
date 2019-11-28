@@ -16,7 +16,7 @@
 	<form action="/calendar/save" method="post">
 @endif
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	  	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	  	
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
@@ -48,15 +48,16 @@
 			<div class="col-12">
 				<div class="form-group">
 					<label for="start_time">เวลาเริ่มกิจกรรม:</label>
-						<input type="time" class="form-control" name="start_time" id="start_time">
+						<input type="time" class="form-control" name="start_time" id="start_time" value="{{ old('start_time', isset($calendar) ? $calendar->start_time:'') }}">
 				</div>
 			</div>
 		</div>		
+		
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
 					<label for="end_time">เวลาสิ้นสุดกิจกรรม:</label>
-						<input type="time" class="form-control" name="end_time" id="end_time">
+						<input type="time" class="form-control" name="end_time" id="end_time" value="{{ old('start_time', isset($calendar) ? $calendar->end_time:'') }}">
 				</div>
 			</div>
 		</div>
