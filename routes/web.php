@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/rfid', function () {
     return view('rfid');
@@ -57,3 +60,7 @@ Route::patch('/calendar/{id}','CalendarController@update');
 Route::get('/get-calendar', function(){
     return \App\Calendar::with('task')->get();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
