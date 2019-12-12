@@ -27,18 +27,31 @@ class UploadController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function teacher()
-    {
-        //return view('upload_files.teacher');
-        return 'teacher';
+    public function upload(Request $request){
+
+        //return $request->all();
+      
+
+        if($request->hasFile('file')){
+            $path = $request->file('file')->store('/public');
+            //$path = $request->file('file')->storeAS('/', $request->file('file')->getClientOriginalName());
+            $filename = pathinfo($path);
+            $upload->file = $filename['basename'];
+            $upload->update();
+            //return Storage::download($path);
+            return Storage::url($path);
+            $upload = Upload::create($request->all());
+        }else{
+            return 'no file';
+        }
+
+
+
+        
+
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
     public function create()
     {
         //
@@ -50,7 +63,7 @@ class UploadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_datasheet(Request $request)
+    public function store(Request $request)
     {
         // $upload = Upload::create($request->all());
 
@@ -75,27 +88,6 @@ class UploadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function store_teacher(Request $request)
-    {
-        // $upload = Upload::create($request->all());
-
-        if($request->hasFile('file')){
-            $path = $request->file('file')->store('/public');
-            $filename = pathinfo($path);
-
-            $upload = Upload::create($request->except('file') + ['file' => $filename['basename']]);
-
-            $time_stamps = new \App\Imports\TeacherdatasImport();
-            $time_stamps->import(storage_path('app/'.$path));
-           
-            return redirect('upload-file/index');
-        }else{
-            return 'no file';
-        }
-    }
-
-
     public function show($id)
     {
         //

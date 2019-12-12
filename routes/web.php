@@ -53,7 +53,16 @@ Route::get('/report', function () {
 // Route::post('/upload-file/upload', 'UploadController@upload');
 
 Route::get('/upload-file/index', 'UploadController@index');
-Route::post('/upload-file/save', 'UploadController@store');
+Route::post('/upload-file/save', 'UploadController@store_datasheet');
+//Route::get('/upload-file/teacher', 'UploadController@teacher');
+Route::get('/upload-file/teacher', 'UploadController@teacher');
+// Route::get('/upload-file/teacher', function () {
+//     return 'teacher';
+// });
+
+//Route::post('/upload-file/teacher', 'UploadController@store_teacher');
+Route::get('/upload-file/student', 'UploadController@student');
+Route::post('/upload-file/student', 'UploadController@store_student');
 
 Route::get('/calendar/{id}', 'CalendarController@show');
 Route::patch('/calendar/{id}','CalendarController@update');
