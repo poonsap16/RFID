@@ -30,7 +30,7 @@ Route::post('/machine/save', 'Rfid_machineController@store');
 Route::get('/machine/show/{id}','Rfid_machineController@show');
 Route::patch('/machine/show/{id}','Rfid_machineController@update');
 
-//
+
 
 Route::get('/menu', function() {
 	return view('layouts/menu');
@@ -49,20 +49,18 @@ Route::get('/report', function () {
     return view('report.index');
 });
 
-// Route::get('/upload-file/index', 'UploadController@index');
-// Route::post('/upload-file/upload', 'UploadController@upload');
 
 Route::get('/upload-file/index', 'UploadController@index');
-Route::post('/upload-file/save', 'UploadController@store_datasheet');
-//Route::get('/upload-file/teacher', 'UploadController@teacher');
-Route::get('/upload-file/teacher', 'UploadController@teacher');
-// Route::get('/upload-file/teacher', function () {
-//     return 'teacher';
-// });
+Route::post('/upload-file/save', 'UploadController@store');
 
-//Route::post('/upload-file/teacher', 'UploadController@store_teacher');
-Route::get('/upload-file/student', 'UploadController@student');
-Route::post('/upload-file/student', 'UploadController@store_student');
+Route::get('/teacher/teachers', 'TeacherController@teachers');
+
+Route::post('/teacher/teacher-save', 'TeacherController@store');
+Route::get('/teacher/show/{id}','TeacherController@show');
+Route::patch('/teacher/show/{id}','TeacherController@update');
+
+Route::get('/student/student', 'StudentController@students');
+Route::post('/student/student-save', 'StudentController@store');
 
 Route::get('/calendar/{id}', 'CalendarController@show');
 Route::patch('/calendar/{id}','CalendarController@update');

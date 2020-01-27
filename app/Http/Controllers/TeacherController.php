@@ -4,29 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Upload;
-use App\Timesheet;
+use App\Teacher;
 
-
-class UploadController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function teachers()
     {
-        return view('upload_files.index');
+        $teachers = \App\Teacher::TeacherAll()->paginate(20); 
+        //return $teachers;
+        return view('teachers.index')->with(['teachers' => $teachers]);  
+
+
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function create()
     {
         //
@@ -40,18 +44,16 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        // $upload = Upload::create($request->all());
-
         if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');
             $filename = pathinfo($path);
 
             $upload = Upload::create($request->except('file') + ['file' => $filename['basename']]);
 
-            $time_stamps = new \App\Imports\TimesheetsImport();
+            $time_stamps = new \App\Imports\TeacherdatasImport();
             $time_stamps->import(storage_path('app/'.$path));
            
-            return redirect('upload-file/index');
+            return redirect('upload-file/teacher');
         }else{
             return 'no file';
         }
@@ -63,13 +65,15 @@ class UploadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function show($id)
+    
     {
-        //
+        $teachers = \App\Teacher::all(); 
+        $teacher = \App\Teacher::find($id);
+
+        return view('teachers.index')->with(['teachers' => $teachers,'teacher' => $teacher]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -16,4 +16,15 @@ class Teacher extends Model
 	            'positiontype',
 	            'section'
     ];
+
+    public function scopeTeacherAll($query){
+        $query->select(
+                '*'
+            )->orderBy('id', 'asc');
+    }
+
+    public function getTeacherFullname ()
+    {
+    	return $this->emprankname . $this->empname . '&nbsp;&nbsp;' . $this->empsname;
+    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use App\Timesheet;
+use App\Teacher;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherdatasImport implements ToCollection, WithHeadingRow
@@ -32,7 +32,7 @@ class TeacherdatasImport implements ToCollection, WithHeadingRow
 
         foreach($collection as $row)
         {
-            Timesheet::create([
+            Teacher::create([
 
             	'empid' => $row['empid'],
 	            'emprankname' => $row['emprankname'],
@@ -48,6 +48,6 @@ class TeacherdatasImport implements ToCollection, WithHeadingRow
 
     public function headingRow(): int
     {
-    	return 3;
+    	return 1;
 	}
 }
