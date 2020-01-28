@@ -16,13 +16,17 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        return view('upload_files.teacher');  
+    }
+
+
     public function teachers()
     {
         $teachers = \App\Teacher::TeacherAll()->paginate(20); 
         //return $teachers;
         return view('teachers.index')->with(['teachers' => $teachers]);  
-
-
     }
 
 
@@ -53,7 +57,7 @@ class TeacherController extends Controller
             $time_stamps = new \App\Imports\TeacherdatasImport();
             $time_stamps->import(storage_path('app/'.$path));
            
-            return redirect('upload-file/teacher');
+            return redirect('teacher/teachers');
         }else{
             return 'no file';
         }

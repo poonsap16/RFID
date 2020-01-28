@@ -15,6 +15,13 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index()
+    {
+        return view('upload_files.student');  
+    }
+
+
     public function students()
     {
         $students = \App\Student::StudentAll()->paginate(20); 
@@ -52,7 +59,7 @@ class StudentController extends Controller
             $time_stamps = new \App\Imports\StudentdatasImport();
             $time_stamps->import(storage_path('app/'.$path));
            
-            return redirect('upload-file/teacher');
+            return redirect('student/student');
         }else{
             return 'no file';
         }

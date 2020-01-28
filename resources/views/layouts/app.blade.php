@@ -58,6 +58,8 @@
                                     <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
                                     <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
                                     <a class="dropdown-item" href="/upload-file/index">โหลดข้อมูลทาบบัตร</a>
+                                    <a class="dropdown-item" href="/teacher/index">โหลดข้อมูลอาจารย์</a>
+                                    <a class="dropdown-item" href="/student/index">โหลดข้อมูลแพทย์ประจำบ้าน</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">เมนู ...</a>
                                   </div>

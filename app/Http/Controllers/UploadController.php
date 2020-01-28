@@ -21,6 +21,14 @@ class UploadController extends Controller
         return view('upload_files.index');
     }
 
+
+    public function timesheets()
+    {
+        return 'test';
+        // $timesheets = \App\Timesheet::TimesheetAll()->paginate(20); 
+        // return view('upload_files.timesheet')->with(['timesheets' => $timesheets]);  
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +59,7 @@ class UploadController extends Controller
             $time_stamps = new \App\Imports\TimesheetsImport();
             $time_stamps->import(storage_path('app/'.$path));
            
-            return redirect('upload-file/index');
+            return redirect('upload-file/timesheets');
         }else{
             return 'no file';
         }

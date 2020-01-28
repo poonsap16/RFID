@@ -52,13 +52,17 @@ Route::get('/report', function () {
 
 Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
+Route::get('/upload-file/timesheet', 'UploadController@timesheets');
 
+
+Route::get('/teacher/index', 'TeacherController@index');
 Route::get('/teacher/teachers', 'TeacherController@teachers');
 
 Route::post('/teacher/teacher-save', 'TeacherController@store');
 Route::get('/teacher/show/{id}','TeacherController@show');
 Route::patch('/teacher/show/{id}','TeacherController@update');
 
+Route::get('/student/index', 'StudentController@index');
 Route::get('/student/student', 'StudentController@students');
 Route::post('/student/student-save', 'StudentController@store');
 
