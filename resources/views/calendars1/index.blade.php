@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navbar')
 
 
 
@@ -13,7 +13,7 @@
   </p>
   <div class="{{ isset($calendar) || $errors->any() ? '' : 'collapse'}} mb-2" id="calendar_form">
     <div class="card card-body">
-      @include('calendars._form')
+      @include('calendars.search')
     </div>
   </div>
 <!-- <div><h3>รายการกิจกรรม</h3></div></br> -->

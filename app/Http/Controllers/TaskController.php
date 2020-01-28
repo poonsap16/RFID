@@ -94,7 +94,7 @@ class TaskController extends Controller
         $rfid_machines = \App\Rfid_machine::all();
             
         //return $task;
-        return view('schedule.edit')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
+        return view('schedule.index')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
     }
 
     /**
@@ -119,7 +119,8 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = \App\Task::find($id)->update($request->all());
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
     }
 
     /**

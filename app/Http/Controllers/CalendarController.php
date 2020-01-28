@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Calendar;
 
 class CalendarController extends Controller
 {
@@ -24,13 +25,6 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function calendar()
-    {
-        return view('calendars.calendar')->with('data',\App\Calendar::all());
-        
-    }
-
     public function create()
     {
         $tasks = \App\Task::all();
@@ -48,12 +42,15 @@ class CalendarController extends Controller
         //$calendar = \App\Calendar::create(request()->all());
         $calendar = new \App\Calendar();
         $calendar->date = $request->input('date');        
-        $calendar->task_id = $request->input('task_job_id');
+        $calendar->task_id = $request->input('task_id');
+        $calendar->start_time = $request->input('start_time');
+        $calendar->end_time = $request->input('end_time');
+        $calendar->color = $request->input('color');
         $calendar->save();
 
-        //return $calendar;
+  
 
-        return redirect('calendar/index');
+        return redirect()->back();
     }
 
     /**
@@ -64,7 +61,35 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = \App\Task::all();
+
+        $calendar = Calendar::find($id);
+
+        return view('calendars.index')->with(['tasks' => $tasks, 'calendar' => $calendar]);
+    }
+
+    public function search()
+    {
+        $tasks = \App\Task::all(); 
+        // $task = \App\Task::find($id);
+        //$tasks = DB::table('tasks')->where
+
+        return view('calendars.search')->with(['tasks' => $tasks]);
+        //$rfid_machines = \App\Rfid_machine::all();
+            
+        //return $task;
+        //return view('schedule.index')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
+    }
+
+    public function searchs(Request $request)
+    {
+
+        //return $request->all();
+        $event = $request->task_id;
+        //return $event;
+        $tasks = \App\Task::find($event);
+        //return $tasks;
+        return view('calendars.add_calendar')->with(['tasks' => $tasks]);
     }
 
     /**
@@ -78,6 +103,9 @@ class CalendarController extends Controller
         //
     }
 
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,7 +115,12 @@ class CalendarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //return $request->all();
+        $calendar = Calendar::find($id)->update($request->all());
+        //$calendar = Calendar::find($id);
+        //return $calendar;
+        return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว'); 
     }
 
     /**

@@ -10,13 +10,30 @@
 @endif
 
 @if(isset($calendar))
-    <form action="{{ url('/calendar',$calendar->id) }}" method="post">
+    <form action="{{ url('/calendar/save') }}" method="post">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
 	<form action="/calendar/save" method="post">
 @endif
       	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	  	
+
+		<div class="form-row">
+			<div class="col-12">
+				<div class="form-group">
+					
+                    <label for="task_id">กิจกรรม:</label>
+                    <select class="form-control" id="task_id" name="task_id">
+                    <option value="{{ ($tasks['id']) }}" selected>{{ $tasks['task_name'] }}</option>
+
+
+
+                    </select>
+				</div>
+			</div>
+		</div>
+
+
+
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
@@ -25,39 +42,22 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-row">
-			<div class="col-12">
-				<div class="form-group">
-					<label for="task_id">กิจกรรม:</label>
-					<select class="form-control" id="task_id" name="task_id">
-					<option value="" hidden>เลือกกิจกรรม</option>
-					@foreach($tasks as $task)
-						@if( old('task_id', isset($calendar) ? $calendar->task_id : '') == $task['id'])
-							<option value="{{ ($task['id']) }}" selected>{{ $task['task_name'] }}</option>
-						@else
-							<option value="{{ ($task['id']) }}">{{ $task['task_name'] }}</option>
-						@endif
-					@endforeach
-					</select>
-				</div>
-			</div>
-		</div>
+
 
 
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
 					<label for="start_time">เวลาเริ่มกิจกรรม:</label>
-						<input type="time" class="form-control" name="start_time" id="start_time" value="{{ old('start_time', isset($calendar) ? $calendar->start_time:'') }}">
+						<input type="time" class="form-control" name="start_time" id="start_time" value="{{ old('start_time', isset($tasks) ? $tasks->start_time:'') }}">
 				</div>
 			</div>
 		</div>		
-		
 		<div class="form-row">
 			<div class="col-12">
 				<div class="form-group">
 					<label for="end_time">เวลาสิ้นสุดกิจกรรม:</label>
-						<input type="time" class="form-control" name="end_time" id="end_time" value="{{ old('start_time', isset($calendar) ? $calendar->end_time:'') }}">
+						<input type="time" class="form-control" name="end_time" id="end_time" value="{{ old('start_time', isset($tasks) ? $tasks->end_time:'') }}">
 				</div>
 			</div>
 		</div>

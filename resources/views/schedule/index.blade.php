@@ -1,4 +1,4 @@
-@extends('layouts.navbar')
+@extends('layouts.app')
 
 
 
@@ -6,7 +6,11 @@
 <div class="col-12">
 @include('schedule._form')
 
-<div><h3>รายการกิจกรรม</h3></div></br>
+<div>
+    <h3>รายการกิจกรรม</h3>
+    
+</div>
+</br>
 
 <table class="table">
   <thead>

@@ -4,7 +4,7 @@
 
 	<div class="container">
             <div class="py-5 text-center">
-                <h3>Upload File ข้อมูลทาบบัตร</h3>
+                <h3>Upload File ข้อมูลแพทย์ประจำบ้าน แพทย์ประจำบ้านต่อยอด เฟลโลว์</h3>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     Upload Validation Error<br><br>
@@ -23,7 +23,7 @@
                 </div>
                 <img src="/images/{{ Session::get('path') }}" widht="300" />
                 @endif
-                <form action="save" method="post" enctype="multipart/form-data">
+                <form action="student-save" method="post" enctype="multipart/form-data">
                     <label for="file">เลือกไฟล์ที่ต้องการ upload:</label>
                     <input type="file" name="file" id="file">
                     <input class="btn btn-primary" type="submit" value="Upload" name="submit">

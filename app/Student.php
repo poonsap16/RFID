@@ -15,4 +15,10 @@ class Student extends Model
             'year',
             'year_study' 
     ];
+
+    public function scopeStudentAll($query){
+        $query->select(
+                '*'
+            )->orderBy('id', 'asc');
+    }
 }

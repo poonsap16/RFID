@@ -1,6 +1,6 @@
 
 @if(isset($rfid_machine))
-    <form action="{{url('/machine/show',$rfid_machine->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/machine/edit',$rfid_machine->id)}}" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
     <form action="save" method="post" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
   			<h3>เกิดข้อผิดพลาด</h3>
 	       	<ul>
 	        	@foreach($errors->all() as $error)
-	           		<li> {!! $error !!}</li>
+	           		<li> {{$error}}</li>
 	         	@endforeach
 	       	</ul>
 	    </div>
@@ -55,5 +55,5 @@
 	  	</div>
 		
 
-	  <button type="submit" class="btn btn-primary">บันทึก</button>
+
 	</form> 

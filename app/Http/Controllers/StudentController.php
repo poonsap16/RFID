@@ -6,35 +6,37 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Upload;
-use App\Timesheet;
+use App\Student;
 
-
-class UploadController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view('upload_files.index');
+        return view('upload_files.student');  
     }
 
 
-    public function timesheets()
+    public function students()
     {
-        return 'test';
-        // $timesheets = \App\Timesheet::TimesheetAll()->paginate(20); 
-        // return view('upload_files.timesheet')->with(['timesheets' => $timesheets]);  
+        $students = \App\Student::StudentAll()->paginate(20); 
+        //return $students;
+        return view('students.index')->with(['students' => $students]);  
+
+
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function create()
     {
         //
@@ -48,18 +50,16 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        // $upload = Upload::create($request->all());
-
-        if($request->hasFile('file')){
+            if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');
             $filename = pathinfo($path);
 
             $upload = Upload::create($request->except('file') + ['file' => $filename['basename']]);
 
-            $time_stamps = new \App\Imports\TimesheetsImport();
+            $time_stamps = new \App\Imports\StudentdatasImport();
             $time_stamps->import(storage_path('app/'.$path));
            
-            return redirect('upload-file/timesheets');
+            return redirect('student/student');
         }else{
             return 'no file';
         }
@@ -71,9 +71,6 @@ class UploadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function show($id)
     {
         //
