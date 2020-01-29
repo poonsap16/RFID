@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-use App\Upload;
 use App\Timesheet;
-
-
-class UploadController extends Controller
+use App\Calendar;
+class TimesheetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +17,35 @@ class UploadController extends Controller
      */
     public function index()
     {
-        return view('upload_files.index');
-    }
+       $timesheets = \App\Timesheet::all(); 
+       $calendar = \App\Calendar::all(); 
+       
+       $data = DB::table('timesheets')
+                    ->join('calendars', 'timesheets.date_stamp', '=', 'calendars.date')
+                    ->select('timesheets.sap_id', 'timesheets.date_stamp', 'timesheets.time_stamp', 'calendars.start_time', 'calendars.end_time')
+                    ->whereTime('timesheets.time_stamp', '<', 'calendars.end_time')
 
+
+                    // ->where('calendars', 'timesheets.date_stamp', '=', 'calendars.date' )
+                    ->get();
+
+       return $data;
+
+        // $users = DB::table('users')
+        //             ->whereNotBetween('votes', [1, 100])
+        //             ->get();
+       // $users = DB::table('users')
+       //      ->join('contacts', 'users.id', '=', 'contacts.user_id')
+       //      ->join('orders', 'users.id', '=', 'orders.user_id')
+       //      ->select('users.*', 'contacts.phone', 'orders.price')
+       //      ->get();
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function create()
     {
         //
@@ -40,25 +57,9 @@ class UploadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
     public function store(Request $request)
     {
-        // $upload = Upload::create($request->all());
-
-        if($request->hasFile('file')){
-            $path = $request->file('file')->store('/public');
-            $filename = pathinfo($path);
-
-            $upload = Upload::create($request->except('file') + ['file' => $filename['basename']]);
-
-            $time_stamps = new \App\Imports\TimesheetsImport();
-            $time_stamps->import(storage_path('app/'.$path));
-           
-            return redirect('upload-file/index');
-        }else{
-            return 'no file';
-        }
+        //
     }
 
     /**
@@ -67,9 +68,6 @@ class UploadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function show($id)
     {
         //

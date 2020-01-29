@@ -52,7 +52,6 @@ Route::get('/report', function () {
 
 Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
-Route::get('/upload-file/timesheet', 'UploadController@timesheets');
 
 
 Route::get('/teacher/index', 'TeacherController@index');
@@ -71,6 +70,8 @@ Route::patch('/calendar/{id}','CalendarController@update');
 Route::get('/get-calendar', function(){
     return \App\Calendar::with('task')->get();
 });
+
+Route::get('/timesheet/index', 'TimesheetController@index');
 
 Auth::routes();
 
