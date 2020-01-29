@@ -48,6 +48,6 @@ class TimesheetsImport implements ToCollection, WithHeadingRow
 
     public function headingRow(): int
     {
-    	return 3;
+    	return 1;
 	}
 }
