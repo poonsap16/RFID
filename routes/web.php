@@ -53,7 +53,6 @@ Route::get('/report', function () {
 Route::get('/upload-file/index', 'UploadController@index');
 Route::post('/upload-file/save', 'UploadController@store');
 
-
 Route::get('/teacher/index', 'TeacherController@index');
 Route::get('/teacher/teachers', 'TeacherController@teachers');
 
@@ -76,3 +75,7 @@ Route::get('/timesheet/index', 'TimesheetController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/task', function () {
+    return \App\Task::find(request()->input('taskId'));
+});

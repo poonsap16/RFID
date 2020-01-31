@@ -28,6 +28,14 @@
                     <input type="file" name="file" id="file">
                     <input class="btn btn-primary" type="submit" value="Upload" name="submit">
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
+
+
+                    <div class="form-row">
+                        <input type="checkbox" value="true" name="doNotBeLate"> Do not be late
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="calendarId" value="2">
+                    </div>
                 </form>
             </div>
 	</div>

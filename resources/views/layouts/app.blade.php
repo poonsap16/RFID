@@ -102,5 +102,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    @yield('extra-script')
 </body>
 </html>

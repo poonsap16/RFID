@@ -31,7 +31,7 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      defaultDate: '2019-10-12',
+      defaultDate: Date.now(),
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       selectMirror: true,

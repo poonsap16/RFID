@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 
 use App\Upload;
 use App\Timesheet;
 
-
 class UploadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('upload_files.index');
@@ -44,7 +36,7 @@ class UploadController extends Controller
 
     public function store(Request $request)
     {
-        // $upload = Upload::create($request->all());
+        $upload = Upload::create($request->all());
 
         if($request->hasFile('file')){
             $path = $request->file('file')->store('/public');

@@ -16,7 +16,7 @@ class CreateTimesheetsTable extends Migration
         Schema::create('timesheets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('no');
-            $table->integer('rfid_no');
+            $table->bigInteger('rfid_no');
             $table->integer('sap_id');
             $table->string('name');
             $table->date('date_stamp');

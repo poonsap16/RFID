@@ -11,11 +11,17 @@ class Calendar extends Model
         'task_id',
         'start_time',
         'end_time',
+        'before_time',
+        'after_time',
+        'late_time',
         'color'
     ];
 
-    public function task(){
+    public function task() {
         return $this->belongsTo(Task::class);
+    }
 
+    public function calendarTimesheet () {
+        return $this->hasMany(CalendarTimesheet::class);
     }
 }

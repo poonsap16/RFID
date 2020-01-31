@@ -39,15 +39,15 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //$calendar = \App\Calendar::create(request()->all());
-        $calendar = new \App\Calendar();
-        $calendar->date = $request->input('date');        
-        $calendar->task_id = $request->input('task_id');
-        $calendar->start_time = $request->input('start_time');
-        $calendar->end_time = $request->input('end_time');
-        $calendar->color = $request->input('color');
-        $calendar->save();
-
+        $calendar = \App\Calendar::create(request()->all());
+        // $calendar = new \App\Calendar();
+        // $calendar->date = $request->input('date');        
+        // $calendar->task_id = $request->input('task_id');
+        // $calendar->start_time = $request->input('start_time');
+        // $calendar->end_time = $request->input('end_time');
+        // $calendar->color = $request->input('color');
+        // $calendar->save();
+        
   
 
         return redirect()->back();
