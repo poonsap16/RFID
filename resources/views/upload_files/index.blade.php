@@ -34,7 +34,7 @@
                         <input type="checkbox" value="true" name="doNotBeLate"> Do not be late
                     </div>
                     <div class="form-row">
-                        <input type="text" name="calendarId" value="2">
+                        <input type="text" name="calendarId" value="1">
                     </div>
                 </form>
             </div>

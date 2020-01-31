@@ -19,7 +19,6 @@ class TimesheetsImport implements ToCollection, WithHeadingRow
     */
     public function collection(Collection $collection)
     {
-        \Log::info(request()->all());
         // \Log::info($collection);
         // \Log::info($collection->toArray());
         Validator::make($collection->toArray(),[
@@ -45,27 +44,26 @@ class TimesheetsImport implements ToCollection, WithHeadingRow
                 'rfid_status' => $row['rfid_status'],
                 'rfid_door' => $row['rfid_door']
             ]);
-
-            if (count($timesheet->calendars) !== 0)
+            
+            // map between calendar and timesheet
+            if ($timesheet->calendars)
             {
-                foreach($timesheet->calendars as $calendar)
-                {
-                    if ($calendar->id == request()->input('calendarId'))
-                    {
-                        $calendarTimesheet = CalendarTimesheet::where('calendar_id', $calendar->id)
-                                                ->where('sap_id', $timesheet->sap_id)
-                                                ->first();
-                        if (!$calendarTimesheet)
-                            CalendarTimesheet::create([
-                            'calendar_id' => $calendar->id,
-                            'sap_id' => $timesheet->sap_id,
-                            // 'time_stamp' => $timesheet->time_stamp
-                            ]);
-                    }
-                }
-                
-            }
+                $mapCalendar = $timesheet->calendars->where('id', request()->input('calendarId'))->first();
 
+                if ($mapCalendar) 
+                {
+                    //check duplicate data
+                    $calendarTimesheet = CalendarTimesheet::where('calendar_id', $mapCalendar->id)
+                                                            ->where('sap_id', $timesheet->sap_id)
+                                                            ->first();
+                    if (!$calendarTimesheet)
+                        CalendarTimesheet::create([
+                            'calendar_id' => $mapCalendar->id,
+                            'sap_id' => $timesheet->sap_id,
+                        ]);
+                }
+            }
+            
         }
     }
 
