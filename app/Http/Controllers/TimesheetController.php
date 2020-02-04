@@ -18,15 +18,15 @@ class TimesheetController extends Controller
     public function index()
     {
        $timesheets = \App\Timesheet::all(); 
-       $calendar = \App\Calendar::all(); 
+       $calendars = \App\Calendar::all(); 
        
        $data = DB::table('timesheets')
                     ->join('calendars', 'timesheets.date_stamp', '=', 'calendars.date')
                     ->select('timesheets.sap_id', 'timesheets.date_stamp', 'timesheets.time_stamp', 'calendars.start_time', 'calendars.end_time')
-                    ->whereTime('timesheets.time_stamp', '<', 'calendars.end_time')
+                    //->whereBetween('timesheets.time_stamp', ['calendars.start_time', 'calendars.end_time'])
+                    // ->whereBetween('time',array($timfrom,$timto))
+                    // ->whereBetween('timesheets.time_stamp', ['08:00:00', '09:00:00'])
 
-
-                    // ->where('calendars', 'timesheets.date_stamp', '=', 'calendars.date' )
                     ->get();
 
        return $data;
