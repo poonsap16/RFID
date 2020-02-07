@@ -49,23 +49,23 @@
 
 		<div class="form-row">
 			<div class="form-group col-sm-2">
-			   	<label for="start_time">เวลาเริ่มกิจกรรม</label>
+			   	<label for="start_time">เวลาเริ่มกิจกรรม : </label>
 				<input type="time" class="form-control" id="start_time" name="start_time" value="{{old('start_time',isset($task) ? $task -> start_time:'')}}">
 			</div>
 			<div class="form-group col-sm-2">
-			    <label for="end_time">เวลาสิ้นสุดกิจกรรม:</label>
+			    <label for="end_time">เวลาสิ้นสุดกิจกรรม :</label>
 			    <input type="time" class="form-control" id="end_time" name="end_time" value="{{old('end_time',isset($task) ? $task -> end_time:'')}}">
 			</div>
 			<div class="form-group col-sm-2">
-				<label for="before_time">เวลาก่อนกิจกรรม</label>
+				<label for="before_time">เวลาก่อนกิจกรรม (ชั่วโมง:นาที)</label>
 			    <input type="time" class="form-control" id="before_time" name="before_time" value="{{old('before_time',isset($task) ? $task -> before_time:'')}}">
 			</div>
 			<div class="form-group col-sm-2">
-			    <label for="after_time">เวลาหลังกิจกรรม:</label>
+			    <label for="after_time">เวลาหลังกิจกรรม (ชั่วโมง:นาที)</label>
 			    <input type="time" class="form-control" id="after_time" name="after_time" value="{{old('after_time',isset($task) ? $task -> after_time:'')}}">
 			</div>
 			<div class="form-group col-sm-2">
-		    	<label for="late_time">เวลาสาย:</label>
+		    	<label for="late_time">เวลาสาย (ชั่วโมง:นาที)</label>
 		    	<input type="time" class="form-control" id="late_time" name="late_time" value="{{old('late_time',isset($task) ? $task -> late_time:'')}}">
 			</div>
 		</div>
@@ -102,9 +102,26 @@
 			    <input type="text" class="form-control" id="work_hour" name="work_hour" value="{{old('work_hour',isset($task) ? $task -> work_hour:'')}}">
 			</div>
 	  	</div>
-
-	  	
-
-
 	  <button type="submit" class="btn btn-primary">บันทึก</button>
 	</form> 
+@section('extra-script')
+<script>
+	function setTime (time) {
+		flatpickr(time, {
+			dateFormat: "H:i",
+			defaultDate: time.value === '' ? "00:00" : time.value,
+			enableTime: true,
+			noCalendar: true,
+			time_24hr: true
+		})
+	}
+
+	setTimeout(() => {
+		setTime(document.getElementById("start_time"));
+		setTime(document.getElementById("end_time"));
+		setTime(document.getElementById("before_time"));
+		setTime(document.getElementById("after_time"));
+		setTime(document.getElementById("late_time"));
+	}, 100);
+</script>
+@endsection
