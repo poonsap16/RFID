@@ -102,12 +102,12 @@
 			    <input type="text" class="form-control" id="work_hour" name="work_hour" value="{{old('work_hour',isset($task) ? $task -> work_hour:'')}}">
 			</div>
 	  	</div>
-<<<<<<< HEAD
+
 
 	  <!-- <button type="submit" class="btn btn-primary">บันทึก</button> -->
-=======
+
 	  <button type="submit" class="btn btn-primary">บันทึก</button>
->>>>>>> 99407c587f69e142fc41f2fc8ba3b18b731d7c34
+
 	</form> 
 @section('extra-script')
 <script>
