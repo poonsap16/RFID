@@ -7,7 +7,9 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> -->
+        <link rel="stylesheet" href="{{url('/css/bootstrap/bootstrap.min.css')}}">
+    	<link rel="stylesheet" href="{{url('/css/font-awesome/css/font-awesome.min.css')}}">
 
         <!-- Styles -->
         <style>
@@ -90,4 +92,8 @@
 
         </div>
     </body>
+
+    <script src="{{url('/js/jquery-3.4.0.min.js') }}"></script>
+    <script src="{{url('/js/popper.min.js')}}"></script>
+    <script src= "{{url('/js/bootstrap/bootstrap.min.js')}}"></script>
 </html>

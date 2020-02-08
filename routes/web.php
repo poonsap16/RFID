@@ -21,7 +21,8 @@ Route::get('/rfid', function () {
 Route::get('/schedule/index', 'TaskController@index');
 Route::get('/schedule/create', 'TaskController@create');
 Route::post('/schedule/save', 'TaskController@store');
-Route::get('/schedule/show/{id}','TaskController@show');
+Route::get('/schedule/edit/{id}','TaskController@edit');
+// Route::get('/schedule/show/{id}','TaskController@show');
 Route::patch('/schedule/show/{id}','TaskController@update');
 
 Route::get('/machine/index', 'Rfid_machineController@index');

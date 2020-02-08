@@ -11,37 +11,36 @@ use \App\Task;
 
 class TaskController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return redirect('/schedule/create');
+        $tasks = \App\Task::all(); 
+        
+        $rfid_machines = \App\Rfid_machine::all();
+        return view('schedule.index')->with(['tasks' => $tasks,'rfid_machines' => $rfid_machines]);  
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $tasks = \App\Task::all(); 
         $rfid_machines = \App\Rfid_machine::all();
-        return view('schedule.create')
-                    ->with(['tasks' => $tasks,'rfid_machines' => $rfid_machines]); 
+        return view('schedule.create')->with(['rfid_machines' => $rfid_machines]);
     }
 
-    public function edit($id)
-    {
-        // $tasks = \App\Task::all();
-        // $task = \App\Task::find($id);
-        // return view('schedule.edit')->with(['task' => $task]); 
-
-        $tasks = \App\Task::all(); 
-        $task = \App\Task::find($id);
-        //$tasks = DB::table('tasks')->where
-
-        $rfid_machines = \App\Rfid_machine::all();
-            
-        //return $task;
-        return view('schedule.edit')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         // $task = new \App\Task();
@@ -104,7 +103,20 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function edit($id)
+    {
+        $tasks = \App\Task::all();
+        $task = \App\Task::find($id);
+        return view('schedule.edit')->with(['task' => $task]); 
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $task = \App\Task::find($id)->update($request->all());

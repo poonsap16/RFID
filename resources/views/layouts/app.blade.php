@@ -55,8 +55,18 @@
                                     จัดการข้อมูลหลัก
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/schedule/index">กิจกรรมหลัก</a>
                                     <a class="dropdown-item" href="/machine/index">เครื่องทาบบัตร</a>
+                                    <a class="dropdown-item" href="/schedule/index">กิจกรรมของภาควิชาฯ</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">เมนู ...</a>
+                                  </div>
+                              </li>
+
+                            <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    โหลดข้อมูล
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/upload-file/index">โหลดข้อมูลทาบบัตร</a>
                                     <a class="dropdown-item" href="/teacher/index">โหลดข้อมูลอาจารย์</a>
                                     <a class="dropdown-item" href="/student/index">โหลดข้อมูลแพทย์ประจำบ้าน</a>
@@ -64,7 +74,6 @@
                                     <a class="dropdown-item" href="#">เมนู ...</a>
                                   </div>
                               </li>
-
 
 
                               <li class="nav-item">

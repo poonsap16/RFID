@@ -103,8 +103,5 @@
 			</div>
 	  	</div>
 
-	  	
-
-
-	  <button type="submit" class="btn btn-primary">บันทึก</button>
+	  <!-- <button type="submit" class="btn btn-primary">บันทึก</button> -->
 	</form> 
