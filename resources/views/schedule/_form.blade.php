@@ -20,19 +20,18 @@
 
 
 
-	<form class="border border-light p-2" action="/schedule/save" method="post">
-	  <!-- <div><h3>เพิ่มกิจกรรม</h3></div>	 -->
+	<!-- <form class="border border-light p-2" action="/schedule/save" method="post"> -->
 
 	  <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br>
-<!-- 	   @if($message = Session::get('success'))
+	   @if($message = Session::get('success'))
 	     <div class="alert alert-success">
 	       {{$message}}
 	     </div>
-	   @endif -->
+	   @endif
 
-
+	   <div class="container">
 		<div class="form-row">
-		  	<div class="form-group  col-sm-2">
+		  	<div class="form-group  col-sm-3">
 			    <label for="task_job_id">รหัสกิจกรรม</label>
 			    <input type="number" class="form-control" id="task_job_id" name="task_job_id" value="{{old('task_job_id',isset($task) ? $task -> task_job_id:'')}}">
 			</div>
@@ -41,7 +40,7 @@
 			    <input type="text" class="form-control" id="task_name" name="task_name"
 			    value="{{old('task_name',isset($task) ? $task -> task_name:'')}}">
 			</div>
-			<div class="form-group  col-sm-2">
+			<div class="form-group  col-sm-3">
 			    <label for="task_Acronym">ชื่อย่อกิจกรรม</label>
 			    <input type="text" class="form-control" id="task_Acronym" name="task_Acronym" value="{{old('task_Acronym',isset($task) ? $task -> task_Acronym:'')}}">
 			</div>
@@ -56,11 +55,11 @@
 			    <label for="end_time">เวลาสิ้นสุดกิจกรรม :</label>
 			    <input type="time" class="form-control" id="end_time" name="end_time" value="{{old('end_time',isset($task) ? $task -> end_time:'')}}">
 			</div>
-			<div class="form-group col-sm-2">
+			<div class="form-group col-sm-3">
 				<label for="before_time">เวลาก่อนกิจกรรม (ชั่วโมง:นาที)</label>
 			    <input type="time" class="form-control" id="before_time" name="before_time" value="{{old('before_time',isset($task) ? $task -> before_time:'')}}">
 			</div>
-			<div class="form-group col-sm-2">
+			<div class="form-group col-sm-3">
 			    <label for="after_time">เวลาหลังกิจกรรม (ชั่วโมง:นาที)</label>
 			    <input type="time" class="form-control" id="after_time" name="after_time" value="{{old('after_time',isset($task) ? $task -> after_time:'')}}">
 			</div>
@@ -71,7 +70,7 @@
 		</div>
 
 		<div class="form-row">
-		  	<div class="form-group  col-sm-2">
+		  	<div class="form-group  col-sm-3">
 			    <label for="job_id">รหัสภาระงาน</label>
 			    <input type="text" class="form-control" id="job_id" name="job_id" value="{{old('job_id',isset($task) ? $task -> job_id:'')}}">
 			</div>
@@ -79,7 +78,7 @@
 			    <label for="job_type">ประเภทภาระงาน:</label>
 			    <input type="text" class="form-control" id="job_type" name="job_type" value="{{old('job_type',isset($task) ? $task -> job_type:'')}}">
 			</div>
-			<div class="form-group col-sm-2">
+			<div class="form-group col-sm-3">
 			    <label for="rfid_machine_id">เครื่องทาบบัตร:</label>
 
 			    <select id="rfid_machine_id" class="form-control" id="rfid_machine_id" name="rfid_machine_id">
@@ -102,13 +101,10 @@
 			    <input type="text" class="form-control" id="work_hour" name="work_hour" value="{{old('work_hour',isset($task) ? $task -> work_hour:'')}}">
 			</div>
 	  	</div>
+		</div>
 
+	<!-- </form>  -->
 
-	  <!-- <button type="submit" class="btn btn-primary">บันทึก</button> -->
-
-	  <button type="submit" class="btn btn-primary">บันทึก</button>
-
-	</form> 
 @section('extra-script')
 <script>
 	function setTime (time) {
