@@ -24,7 +24,29 @@
           <td>{{ $task->task_Acronym }}</td>
           <td>{{ $task->start_time }} - {{ $task->end_time }}</td>
           <td>
-            <a class="btn btn-success" role="button" href="{{url('/schedule/edit',$task->id)}}">แก้ไข</a>
+            <!-- <a class="btn btn-success" role="button" href="{{url('/schedule/edit',$task->id)}}">แก้ไข</a> -->
+            
+            <a
+                    class="btn btn-sm btn-success"
+                    href="/schedule/edit/{{ $task->id }}"
+                >แก้ไข</a>
+                <form id="check-complate-{{ $task->id }}" action="/schedule/edit/{{$task->id}}" method="POST" style="display: none;">
+                    @csrf
+                    @method('patch')
+                    <input type="hidden" name="status" value="1">
+                </form>
+            
+            
+            <form id="delete-{{ $task->id }}" action="/schedule/edit/{{$task->id}}" method="POST" style="display: none;">
+                    @csrf
+                    @method('delete')
+                </form>
+                <button
+                    class="btn btn-sm btn-danger"
+                    onclick="document.getElementById('delete-{{ $task->id }}').submit()"
+                >ลบ</button>
+                
+          
           </td>
           </td>
       </tr>

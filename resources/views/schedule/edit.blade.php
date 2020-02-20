@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Edit')
-
-@section('contents')
-
+@section('content')
     <form action="{{url('/schedule/edit',$task->id)}}" method="post" enctype="multipart/form-data">
-    	@method('put')
-    	@include('schedule._form')
+        @method('put')
+        @include('schedule._form')
+        <!-- submit -->
+        
+        <div class="container">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
 
-    <!-- <input type="hidden" name="_method" value="PATCH">  -->
+    @include('schedule.index')
 
-    <button type="submit" class="btn btn-primary">Update</button>
-	</form>
-
-@include('schedule.index')
 @endsection

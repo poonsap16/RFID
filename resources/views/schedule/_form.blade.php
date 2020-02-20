@@ -1,11 +1,11 @@
-
+<!-- 
 @if(isset($task))
     <form action="{{url('/schedule/show',$task->id)}}" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PATCH"> 
 @else
     <form action="save" method="post" enctype="multipart/form-data">
 @endif
-    <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br> 
+    <input type="hidden" name="_token" value="{{ csrf_token() }}"> </br>  -->
 
 
 	   @if($errors->any())

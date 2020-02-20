@@ -28,18 +28,14 @@ class TaskController extends Controller
 
     public function edit($id)
     {
-        // $tasks = \App\Task::all();
-        // $task = \App\Task::find($id);
-        // return view('schedule.edit')->with(['task' => $task]); 
-
         $tasks = \App\Task::all(); 
         $task = \App\Task::find($id);
-        //$tasks = DB::table('tasks')->where
+
 
         $rfid_machines = \App\Rfid_machine::all();
             
-        //return $task;
         return view('schedule.edit')->with(['tasks' => $tasks,'task' => $task, 'rfid_machines' => $rfid_machines]);
+       
     }
 
     public function store(Request $request)
@@ -108,7 +104,8 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = \App\Task::find($id)->update($request->all());
-        return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
+        // return redirect()->back()->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
+        return redirect('/schedule/create')->with('success', 'แก้ไขข้อมูลเรียบร้อยแล้ว');
     }
 
     /**
@@ -117,8 +114,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Task $id)
     {
-        //
+        $task=\App\Task::find($id);
+        $task->delete();
+        return redirect('/schedule/create')->with('success','ลบข้อมูลเรียบร้อยแล้ว');
     }
 }
