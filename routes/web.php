@@ -24,7 +24,7 @@ Route::post('/schedule/save', 'TaskController@store');
 Route::get('/schedule/edit/{id}','TaskController@edit');
 // Route::get('/schedule/show/{id}','TaskController@show');
 Route::put('/schedule/edit/{id}','TaskController@update');
-Route::delete('/schedule/edit/{id}','TaskController@delete');
+Route::delete('/schedule/edit/{id}','TaskController@destroy');
 // Route::patch('/schedule/show/{id}','TaskController@update');
 
 Route::get('/machine/index', 'Rfid_machineController@index');

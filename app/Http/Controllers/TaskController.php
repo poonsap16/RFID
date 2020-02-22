@@ -40,33 +40,40 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        // $task = new \App\Task();
-        // $task->task_id = $request->input('task_id');
-        // $task->task_name = $request->input('task_name');
-        // $task->task_Acronym = $request->input('task_Acronym');
-        // $task->start_time = $request->input('start_time');
-        // $task->end_time = $request->input('end_time');
-        // $task->before_time = $request->input('before_time');
-        // $task->after_time = $request->input('after_time');
-        // $task->late_time = $request->input('late_time');
-        // $task->job_id = $request->input('job_id');
-        // $task->job_type = $request->input('job_type');
-        // $task->rfid_location = $request->input('rfid_location');
-        // $task->work_hour = $request->input('work_hour');
-        // $task->save();
-        //return view('schedule.activity');
-        //return $request->all();
-        $validate =[
-            'task_id' => 'required',
-            'task_name' => 'required|max:50',
 
-            
-        ];
-        $messageError = [
-            'task_id.required' => 'เลือกประเภทงาน',
-            'task_name.required' => 'ใส่ชื่องาน',
-            'task_name.max' => 'กรอกได้ไม่เกิน 50 ตัวอักษร'
-        ];
+        $request->validate([
+
+            'task_job_id' => 'required',
+            'task_name' => 'required',
+            'task_Acronym' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'before_time' => 'required',
+            'after_time' => 'required',
+            'late_time' => 'required',
+            'job_id' => 'required',
+            'job_type' => 'required',
+            'rfid_machine_id' => 'required',
+            'work_hour' => 'required'
+
+        ], [
+
+            'task_job_id.required' => 'กรุณาใส่ รหัสกิจกรรม',
+            'task_name.required' => 'กรุณาใส่ ชื่อกิจกรรม',
+            'task_Acronym.required' => 'กรุณาใส่ ชื่อย่อกิจกรรม',
+            'start_time.required' => 'กรุณาใส่ เวลาเริ่มกิจกรรม',
+            'end_time.required' => 'กรุณาใส่ เวลาสิ้นสุดกิจกรรม',
+            'before_time.required' => 'กรุณาใส่ เวลาก่อนกิจกรรม',
+            'after_time.required' => 'กรุณาใส่ เวลาหลังกิจกรรม',
+            'late_time.required' => 'กรุณาใส่ เวลาสาย',
+            'job_id.required' => 'กรุณาใส่ รหัสภาระงาน',
+            'job_type.required' => 'กรุณาใส่ ประเภทภาระงาน',
+            'rfid_machine_id.required' => 'กรุณาใส่ เครื่องทาบบัตร',
+            'work_hour.required' => 'กรุณาใส่ ชั่วโมงภาระงาน'
+        ]);
+
+
+        // $this->validateData($request);
         $task = \App\Task::create(request()->all());
         $task->save();
 
@@ -114,10 +121,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $id)
+    public function destroy($id)
     {
         $task=\App\Task::find($id);
         $task->delete();
         return redirect('/schedule/create')->with('success','ลบข้อมูลเรียบร้อยแล้ว');
     }
+
 }
